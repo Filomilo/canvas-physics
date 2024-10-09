@@ -5,7 +5,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/shapesDemo',
+      path: '/',
+      name: 'main',
+      component: () => import('@/views/ShapesDemoView.vue')
+    },
+    {
+      path: '/ShapesDemo',
       name: 'shapesDemo',
       component: () => import('@/views/ShapesDemoView.vue')
     },

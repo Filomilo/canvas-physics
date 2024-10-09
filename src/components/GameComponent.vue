@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import Game from "@/Game/game"
+import Game from "@/Game/Game"
 import { ignorableKeyModifiers } from "node_modules/@vue/test-utils/dist/constants/dom-events";
 import { onMounted, ref, watch } from "vue";
 const props = defineProps<{
@@ -27,12 +27,9 @@ onMounted(() => {
 
 watch(canvasRef, () => {
     if (props.game && canvasRef.value) {
-        const ctx: CanvasRenderingContext2D | null = canvasRef.value.getContext('2d');
-        if (ctx) {
             resizeCanvas();
-            props.game.init(ctx
+            props.game.init(canvasRef.value
             )
-        }
 
     }
 })
