@@ -11,8 +11,11 @@ export default defineConfig({
     vueDevTools(),
   ],
   resolve: {
+    preserveSymlinks: true,
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      views: '/src/views',
+      components: '/src/components',
     }
   }
 })
