@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "dev": "vite ",
+    "build": "run-p type-check \"build-only {@}\" -- ",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -14,6 +14,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
     "@vue/runtime-core": "^3.5.11",
     "async-mutex": "^0.5.0",
     "three": "^0.169.0",
@@ -36,10 +37,11 @@
     "jsdom": "^24.1.0",
     "npm-run-all2": "^6.2.0",
     "prettier": "^3.2.5",
-    "typescript": "~5.4.0",
+    "typescript": "^5.6.3",
     "vite": "^5.3.1",
+    "vite-plugin-checker": "^0.8.0",
     "vite-plugin-vue-devtools": "^7.3.1",
     "vitest": "^1.6.0",
-    "vue-tsc": "^2.0.21"
+    "vue-tsc": "^2.1.6"
   }
 }

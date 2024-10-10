@@ -1,14 +1,6 @@
 {
-  "compilerOptions": {
-    "types": ["vue"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*.ts", "src/**/*.vue"],
   "files": [],
+  "exclude": ["src/**/__tests__/*"],
   "references": [
     {
       "path": "./tsconfig.node.json"
@@ -19,5 +11,17 @@
     {
       "path": "./tsconfig.vitest.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["ES2021", "DOM"],
+    "module": "NodeNext",
+    "noImplicitAny": false,
+    "allowJs": true,
+    "checkJs": false,
+    "verbatimModuleSyntax": false,
+    "types": ["cypress"],
+    "typeRoots": ["./src/types", "./node_modules/@types/"],
+    "paths": {}
+  }
 }

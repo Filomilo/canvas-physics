@@ -4,7 +4,8 @@ export namespace DrawHelpers{
 
    export function drawCircle(ctx: CanvasRenderingContext2D, x: number,y:number,radius:number,color:string="white")
    {
-    ctx.fillStyle =color;
+      console.trace("drawCircle")
+    ctx.fillStyle ="green";
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);     
     ctx.fill();

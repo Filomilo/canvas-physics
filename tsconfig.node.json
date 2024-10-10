@@ -1,5 +1,6 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
+  "exclude": ["src/**/__tests__/*"],
   "include": [
     "vite.config.*",
     "vitest.config.*",
@@ -8,10 +9,11 @@
     "playwright.config.*"
   ],
   "compilerOptions": {
+    "esModuleInterop": true,
     "composite": true,
-    // "noEmit": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "noEmit": true,
     "module": "ESNext",
+    "verbatimModuleSyntax": false,
     "moduleResolution": "Bundler",
     "types": ["node"]
   }

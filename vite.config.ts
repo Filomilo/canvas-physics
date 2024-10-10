@@ -2,20 +2,32 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+function getFolder(id: string) {
+  if (id === undefined) return ''
+  const splits = id.split('/')
+  return splits[splits.length - 2]
+}
 
-// https://vitejs.dev/config/
+
+
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  base: '',
+  plugins: [vue(), vueJsx()],
   resolve: {
-    preserveSymlinks: true,
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      views: '/src/views',
-      components: '/src/components',
-    }
-  }
+    },
+  },
+  // esbuild: {
+  //   drop: ['console', 'debugger'],
+  // },
+
+  build: {
+    target: 'esnext',
+    modulePreload: {
+      resolveDependencies: () => [],
+    },
+    // minify: false,
+  },
 })

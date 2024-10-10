@@ -10,14 +10,14 @@
 
 import GameComponent from '@/components/GameComponent.vue';
 import Game from '@/Game/Game';
+import Ball from '@/Game/Objects/Ball';
 import MovablePolygon from '@/Game/Objects/MovablePolygon';
 import Point from '@/Game/Objects/Point';
 import Polygon from '@/Game/Objects/Polygon';
 import {Vector2} from 'three'
 const game: Game = new Game();
 
-game.addObject(new Point(new Vector2(20,20)));
-game.addObject(new MovablePolygon([new Vector2(100,100),new Vector2(200,200),new Vector2(200,100)]))
-
+console.log("Ball create")
+game.addObject(new Ball(new Vector2(300,300),50,"green"))
 
 </script>

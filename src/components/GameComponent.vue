@@ -9,7 +9,6 @@
 
 <script lang="ts" setup>
 import Game from "@/Game/Game"
-import { ignorableKeyModifiers } from "node_modules/@vue/test-utils/dist/constants/dom-events";
 import { onMounted, ref, watch } from "vue";
 const props = defineProps<{
     game: Game,

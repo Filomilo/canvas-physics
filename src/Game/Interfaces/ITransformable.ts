@@ -1,5 +1,4 @@
-import type { Euler, Vector2 } from "node_modules/threejs-math/types";
-import type { Matrix3 } from "three";
+import type { Matrix3,Euler, Vector2 } from "three";
 
 export interface ITransformable{
     move(moveVector: Vector2): void;
