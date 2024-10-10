@@ -4,14 +4,17 @@ export namespace DrawHelpers{
 
    export function drawCircle(ctx: CanvasRenderingContext2D, x: number,y:number,radius:number,color:string="white")
    {
-      console.trace("drawCircle")
-    ctx.fillStyle ="green";
+      
+      // console.log("drawCircle: "+radius)
+    ctx.fillStyle =color;
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);     
     ctx.fill();
    }
    export function drawLine(ctx: CanvasRenderingContext2D, beginX: number,beginY:number, endX: number,endY:number,width:number=3,color:string="white")
    {
+
+   
       ctx.beginPath();
       ctx.moveTo(beginX, beginY);
       ctx.lineTo(endX, endY);

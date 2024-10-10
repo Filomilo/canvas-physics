@@ -23,8 +23,8 @@ export default class Polygon extends GameObject implements IDrawable,ITransforma
         console.log("move: "+JSON.stringify(moveVector))
 
     }
-    rotate(rot: Euler): void {
-        throw new Error("Method not implemented.");
+    rotate(theta: number): void {
+        this.transformation.rotate(theta)
     }
 
 

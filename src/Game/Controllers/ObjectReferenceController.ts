@@ -3,6 +3,7 @@ import { implementsDrawable, type IDrawable } from "../Interfaces/IDrawble";
 import { implementsHoverable, type IHoverable } from "../Interfaces/IHoverable";
 import { implementsMouseReactive, type IMouseReactive } from "../Interfaces/IMouseReactive";
 import { implementsPressable, type IPressable } from "../Interfaces/IPressable";
+import ISimulatable, { implementsSimulatable } from "../Interfaces/ISimulatable";
 import { implementsTransformable, type ITransformable } from "../Interfaces/ITransformable";
 import { implementsUpdatable, type IUpdatable } from "../Interfaces/IUpatable";
 import type GameObject from "../Objects/GameObjectBase";
@@ -16,6 +17,7 @@ export default class ObjectReferenceController{
     TransformableObjects: ITransformable[]=[]
     MouseReactiveObjects: IMouseReactive[]=[]
     UpdatableObjects: IUpdatable[]=[]
+    SimulatableObjects: ISimulatable[]=[]
 
     public addObject(object: GameObject)
     {
@@ -44,6 +46,9 @@ export default class ObjectReferenceController{
         }
         if(implementsUpdatable(object)){
             this.UpdatableObjects.push(object as IUpdatable)
+        }
+        if(implementsSimulatable(object)){
+            this.SimulatableObjects.push(object as ISimulatable)
         }
     }
     

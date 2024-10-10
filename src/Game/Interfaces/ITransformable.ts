@@ -2,7 +2,7 @@ import type { Matrix3,Euler, Vector2 } from "three";
 
 export interface ITransformable{
     move(moveVector: Vector2): void;
-    rotate(rot:Euler): void;
+    rotate(theta:number): void;
 
 }
 

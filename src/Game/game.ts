@@ -6,14 +6,16 @@ import MouseController, { MouseEvents } from "./Controllers/MouseController"
 import type { Vector2 } from "three"
 import { compressNormals } from "three/examples/jsm/utils/GeometryCompressionUtils.js"
 import type { IClickable } from "./Interfaces/IClickable"
+import SimulationController from "./Controllers/SimulationController"
 
 export default class Game {
 
   private _ctx!: CanvasRenderingContext2D
   private _canvas!: HTMLCanvasElement
 
-  private _objectReferenceController: ObjectReferenceController=new ObjectReferenceController();
+  public _objectReferenceController: ObjectReferenceController=new ObjectReferenceController();
   public _MouseController!: MouseController
+  public _SimulationController: SimulationController=new SimulationController(this)
 
   private time: number=0;
 
@@ -41,6 +43,7 @@ export default class Game {
       this.time=new Date().getTime();
       this.resolveEvents();
       this.update()
+      this._SimulationController.simulate();
       this.drawBackground();
       this.drawObjects();
       requestAnimationFrame(this.gameLoop.bind(this))

@@ -11,7 +11,7 @@ export default class Point extends GameObject implements ITransformable, IDrawab
     {
      
         super();
-        console.log("Point constructor: "+color)
+        console.log("Point constructor: "+radius)
         this.position=pos;
         this._radius=radius;
         this._Color=color
@@ -22,9 +22,9 @@ export default class Point extends GameObject implements ITransformable, IDrawab
     public _radius: number=1;
     public visible: boolean=true;
 
-    move(moveVector: Vector2, radius: number=10): void {
+    move(moveVector: Vector2): void {
         this.position.add(moveVector);
-        this._radius=radius;
+        // this._radius=radius;
     }
     rotate(rot: Euler): void {
         // throw new Error("Method not implemented.");
