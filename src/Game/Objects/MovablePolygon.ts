@@ -10,8 +10,9 @@ import type { IClickable } from "../Interfaces/IClickable";
 import type { IPressable } from "../Interfaces/IPressable";
 import type { IUpdatable } from "../Interfaces/IUpatable";
 import type { ITransformable } from "../Interfaces/ITransformable";
+import CollidablePolygon from "./CollidablePolygon";
 
-export default class MovablePolygon extends Polygon implements IHoverable,IClickable, IPressable, IUpdatable{
+export default class MovablePolygon extends CollidablePolygon implements IHoverable,IClickable, IPressable, IUpdatable{
 
     private _originalColor:string="white";
 
