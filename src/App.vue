@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+import UserUi from './components/UserUi.vue';
 </script>
 
 <template>
-  <header>
-
-    <div class="wrapper">
-
-      <nav>
-        <RouterLink to="/Home">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/ShapesDemo">shapesDemo</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <!-- <header> -->
+  <UserUi />
+  <!-- </header> -->
 
   <RouterView />
 </template>

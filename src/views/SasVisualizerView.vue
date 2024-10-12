@@ -1,6 +1,9 @@
 <template>
     <main class="DemoView">
-        SAS VIsuaLiszer Demo
+        <div class="titleStyle">
+            SAS VIsuaLiszer Demo
+        </div>
+
         <GameComponent class="gameView" id="shapes_demo" :game="game" />
     </main>
 </template>

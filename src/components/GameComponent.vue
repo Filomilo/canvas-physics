@@ -1,6 +1,5 @@
 <template>
     <div>
-        Canvas
         <canvas v-if="props.game && props.id" :id="props.id" ref="canvasRef" />
 
     </div>
