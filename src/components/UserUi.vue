@@ -1,9 +1,16 @@
 <template>
     <div class="overlayer">
         <div class="buttonFloatContainer">
-            <SpeedDial :model="items" direction="up" class="buttonFloat" />
+            <SpeedDial ico :model="items" direction="up" class="buttonFloat">
+                <template #button="{ toggleCallback }">
+                    <Button outlined class="border" @click="toggleCallback">
+                        <i class="pi pi-chevron-up" style="font-size: 2rem"></i>
+                    </Button>
+                </template>
+            </SpeedDial>
         </div>
     </div>
+    <!-- </div>pi-chevron-up -->
 </template>
 
 <script setup lang="ts">
