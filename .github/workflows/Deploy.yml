@@ -1,16 +1,14 @@
-name: Build and Deploy Vue Application to Github Pages
-on:
-  push:
-    branch: main
+name: Build Vue
+on: [push]
 jobs:
-  build_deploy_vue:
+  build_vue:
     runs-on: ubuntu-latest
-    name: Build and Deploy Vue
+    name: Build Vue
     steps:
       - uses: actions/checkout@v2
-      - id: Build-Deploy-Vue
-        uses: thefrustrateddev/vue-deploy-github-pages@v1.0.0
+      - id: Build-Vue
+        uses: LizAinslie/VueBuildToBranchAction@1.0.2
         with:
           username: 'Filomilo'
           reponame: 'canvas-physics'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
