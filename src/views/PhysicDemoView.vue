@@ -1,6 +1,9 @@
 <template>
     <main class="DemoView">
-        Balls canvas Demo
+
+        <div class="titleStyle">
+            Balls canvas Demo
+        </div>
         <GameComponent class="gameView" id="shapes_demo" :game="game" />
     </main>
 </template>

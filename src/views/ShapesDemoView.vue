@@ -1,6 +1,10 @@
 <template>
     <main class="DemoView">
-        Shapes canvas Demo
+        <div class="titleStyle">
+            Shapes canvas Demo
+        </div>
+
+
         <GameComponent class="gameView" id="shapes_demo" :game="game" />
     </main>
 </template>
@@ -13,11 +17,11 @@ import Game from '@/Game/Game';
 import MovablePolygon from '@/Game/Objects/MovablePolygon';
 import Point from '@/Game/Objects/Point';
 import Polygon from '@/Game/Objects/Polygon';
-import {Vector2} from 'three'
+import { Vector2 } from 'three'
 const game: Game = new Game();
 
-game.addObject(new Point(new Vector2(20,20)));
-game.addObject(new MovablePolygon([new Vector2(100,100),new Vector2(200,200),new Vector2(200,100)]))
+game.addObject(new Point(new Vector2(20, 20)));
+game.addObject(new MovablePolygon([new Vector2(100, 100), new Vector2(200, 200), new Vector2(200, 100)]))
 
 
 </script>

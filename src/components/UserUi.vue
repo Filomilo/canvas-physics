@@ -24,37 +24,44 @@ const router = useRouter();
 
 const items = ref([
     {
-        label: 'Add',
-        icon: 'pi pi-pencil',
+        label: 'SasVisualizerView',
+        icon: 'pi pi-link',
         command: () => {
-            // toast.add({ severity: 'info', summary: 'Add', detail: 'Data Added', life: 3000 });
+            router.push("SasVisualizerView")
+            // window.location.href = 'https://vuejs.org/'
         }
     },
     {
-        label: 'Update',
-        icon: 'pi pi-refresh',
+        label: 'CollisionsDemo',
+        icon: 'pi pi-shield',
         command: () => {
-            // toast.add({ severity: 'success', summary: 'Update', detail: 'Data Updated', life: 3000 });
+            router.push("CollisionsDemo")
+            // window.location.href = 'https://vuejs.org/'
         }
     },
     {
-        label: 'Delete',
-        icon: 'pi pi-trash',
+        label: 'PhysicDemoView',
+        icon: 'pi pi-flag',
         command: () => {
-            // toast.add({ severity: 'error', summary: 'Delete', detail: 'Data Deleted', life: 3000 });
+            router.push("PhysicDemoView")
+            // window.location.href = 'https://vuejs.org/'
         }
-    },
+    }
+    ,
     {
-        label: 'Upload',
-        icon: 'pi pi-upload',
+        label: 'ballsDemo',
+        icon: 'pi pi-circle',
         command: () => {
-            // router.push('/fileupload');
+            router.push("ballsDemo")
+            // window.location.href = 'https://vuejs.org/'
         }
-    },
+    }
+    ,
     {
-        label: 'Vue Website',
-        icon: 'pi pi-external-link',
+        label: 'ShapesDemo',
+        icon: 'pi pi-box',
         command: () => {
+            router.push("ShapesDemo")
             // window.location.href = 'https://vuejs.org/'
         }
     }
