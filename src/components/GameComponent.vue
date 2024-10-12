@@ -19,16 +19,16 @@ const props = defineProps<{
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
 onMounted(() => {
-    console.log("onMOunted")
-    console.log(canvasRef.value)
+    // console.log("onMOunted")
+    // console.log(canvasRef.value)
 
 })
 
 watch(canvasRef, () => {
     if (props.game && canvasRef.value) {
-            resizeCanvas();
-            props.game.init(canvasRef.value
-            )
+        resizeCanvas();
+        props.game.init(canvasRef.value
+        )
 
     }
 })
