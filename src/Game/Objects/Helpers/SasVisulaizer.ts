@@ -26,12 +26,12 @@ class SasVisulaizer extends GameObject implements IDrawable {
     )
 
     normals.forEach((N: Vector2) => {
+      N = new Vector2(Math.abs(N.x), Math.abs(N.y))
       DrawHelpers.drawLine(
         ctx,
-        // 0,
-        // 0,
-        N.x < 0 ? this.game!.getWidthAndHeightOfCanvas().x : 0,
-        N.y < 0 ? this.game!.getWidthAndHeightOfCanvas().y : 0,
+        0,
+        0,
+
         N.x * 1000,
         N.y * 1000,
         5,
@@ -44,15 +44,15 @@ class SasVisulaizer extends GameObject implements IDrawable {
       // let max: number = Number.MIN_VALUE
       // let min: number = Number.MAX_VALUE
       // const theta: number = Math.atan2(N.y, N.x)
-      pts1.forEach((pt: Vector2) => {
-        const len: number = N.dot(pt)
-        DrawHelpers.drawCircle(ctx, N.x * len, N.y * len, 6, 'yellow')
-      })
+      // pts1.forEach((pt: Vector2) => {
+      //   const len: number = N.dot(pt)
+      //   DrawHelpers.drawCircle(ctx, N.x * len, N.y * len, 6, 'yellow')
+      // })
 
-      pts2.forEach((pt: Vector2) => {
-        const len: number = N.dot(pt)
-        DrawHelpers.drawCircle(ctx, N.x * len, N.y * len, 4, 'purple')
-      })
+      // pts2.forEach((pt: Vector2) => {
+      //   const len: number = N.dot(pt)
+      //   DrawHelpers.drawCircle(ctx, N.x * len, N.y * len, 4, 'purple')
+      // })
 
       // console.log('minMax1: ' + JSON.stringify(minMax1))
       DrawHelpers.drawLine(
