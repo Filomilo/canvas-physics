@@ -11,7 +11,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "serve": "serve -s dist"
   },
   "dependencies": {
     "@primevue/themes": "^4.1.0",
@@ -20,6 +21,7 @@
     "async-mutex": "^0.5.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.1.0",
+    "serve": "^14.2.3",
     "three": "^0.169.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
