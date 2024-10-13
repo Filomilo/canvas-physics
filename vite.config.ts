@@ -9,15 +9,13 @@ function getFolder(id: string) {
   return splits[splits.length - 2]
 }
 
-
-
 export default defineConfig({
-  base: '',
+  base: 'canvas-physics',
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
   },
   // esbuild: {
   //   drop: ['console', 'debugger'],
@@ -26,8 +24,8 @@ export default defineConfig({
   build: {
     target: 'esnext',
     modulePreload: {
-      resolveDependencies: () => [],
-    },
+      resolveDependencies: () => []
+    }
     // minify: false,
-  },
+  }
 })

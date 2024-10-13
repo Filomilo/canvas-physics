@@ -10,7 +10,7 @@ jobs:
         uses: LizAinslie/VueBuildToBranchAction@1.0.2
         with:
           username: 'Filomilo'
-          reponame: 'YourRepoName'
+          reponame: 'canvas-physics'
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'gh-pages'
           useyarn: true
