@@ -14,6 +14,9 @@ export default class Point extends GameObject implements ITransformable, IDrawab
     this._radius = radius
     this._Color = color
   }
+  rotate(theta: number): void {
+    throw new Error('Method not implemented.')
+  }
 
   public position: Vector2
   public rotation: Euler = new Euler()
@@ -24,9 +27,7 @@ export default class Point extends GameObject implements ITransformable, IDrawab
     this.position.add(moveVector)
     // this._radius=radius;
   }
-  rotate(rot: Euler): void {
-    // throw new Error("Method not implemented.");
-  }
+
   draw(ctx: CanvasRenderingContext2D): void {
     // console.log("Draw: "+this._Color)
     DrawHelpers.drawCircle(ctx, this.position.x, this.position.y, this._radius, this._Color)

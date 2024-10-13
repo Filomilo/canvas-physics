@@ -1,10 +1,8 @@
-import type Game from "../Game";
-import { implementsHoverable } from "../Interfaces/IHoverable";
+import Game from '@/Game/Game'
+import { implementsHoverable } from '../Interfaces/IHoverable'
 
-export default class GameObject{
+export default class GameObject {
+  public game?: Game
 
-    public game?: Game;
-
-    constructor (){
-    }
+  constructor() {}
 }

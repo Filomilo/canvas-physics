@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import SpeedDial from 'primevue/speeddial'
-import Noir from './presets/Noir'
+import Noir from '@/presets/Noir'
 
 const app = createApp(App)
 
