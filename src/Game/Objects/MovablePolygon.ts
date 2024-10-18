@@ -11,10 +11,11 @@ import type { IPressable } from '../Interfaces/IPressable'
 import type { IUpdatable } from '../Interfaces/IUpatable'
 import type { ITransformable } from '../Interfaces/ITransformable'
 import { compressNormals } from 'three/examples/jsm/utils/GeometryCompressionUtils.js'
+import CollidablePolygon from './CollidablePolygon'
 // import CollidablePolygon from "./CollidablePolygon";
 
 export default class MovablePolygon
-  extends Polygon
+  extends CollidablePolygon
   implements IHoverable, IClickable, IPressable, IUpdatable
 {
   centerOrigin() {
@@ -41,6 +42,7 @@ export default class MovablePolygon
       // console.log('MovablePolygonPRess: ' + this.isPressed)
       const delta: Vector2 | undefined = this.game?._MouseController.getMouseDelta()
       this.move(this.isPressed ? (delta ? delta : new Vector2(0, 0)) : new Vector2(0, 0))
+      this.rotate(this.game?this.game?._MouseController.getScrollDelta():0)
     }
     // if(this.isPressed===true)
     // {

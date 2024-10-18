@@ -15,6 +15,7 @@ export default class Polygon extends GameObject implements IDrawable, ITransform
     this._color = color
   }
   transformation: Matrix3 = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1)
+  localTransformation: Matrix3 = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1)
 
   move(moveVector: Vector2): void {
     // console.log('move')
@@ -23,13 +24,13 @@ export default class Polygon extends GameObject implements IDrawable, ITransform
   }
   rotate(theta: number): void {
     // console.log('theta; ' + theta)
-    this.transformation.rotate(theta)
+    this.localTransformation.rotate(theta)
   }
 
   public getTransformedPoints(): Vector2[] {
     return this._points.map((point) => {
       const clonedPoint: Vector2 = new Vector2(point.x, point.y)
-      return clonedPoint.applyMatrix3(this.transformation)
+      return clonedPoint.applyMatrix3(this.localTransformation).applyMatrix3(this.transformation)
     })
   }
   getMidAvgPoint() {

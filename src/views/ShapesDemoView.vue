@@ -21,7 +21,11 @@ import { Vector2 } from 'three'
 const game: Game = new Game();
 
 game.addObject(new Point(new Vector2(20, 20)));
-game.addObject(new MovablePolygon([new Vector2(100, 100), new Vector2(200, 200), new Vector2(200, 100)]))
+const tringle:MovablePolygon=new MovablePolygon([new Vector2(-100, -100), new Vector2(-100, 200), new Vector2(200, 100)]);
+tringle.centerOrigin()
+tringle.move(new Vector2(100,100))
+
+game.addObject(tringle)
 
 
 </script>

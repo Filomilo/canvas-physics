@@ -7,17 +7,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'main',
-      component: () => import('@/views/SasVisualizerView.vue')
+      component: () => import('@/views/PhysicDemoView.vue')
     },
     {
       path: '/SasVisualizerView',
       name: 'SasVisualizerView',
       component: () => import('@/views/SasVisualizerView.vue')
-    },
-    {
-      path: '/CollisionsDemo',
-      name: 'CollisionsDemo',
-      component: () => import('@/views/CollisionDemoView.vue')
     },
     {
       path: '/ballsDemo',

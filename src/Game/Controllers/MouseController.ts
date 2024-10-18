@@ -1,4 +1,5 @@
 import { Vector2 } from "three";
+import { GameConfig } from "../GameConfig";
 
 export enum MouseEvents{
     LEFTCLICK,
@@ -10,9 +11,11 @@ export enum MouseEvents{
 export default class MouseController{
 
 
+
     _canvas:HTMLCanvasElement;
     private mousePosition: Vector2=new Vector2(0,0);
     private mouseDelta: Vector2=new Vector2(0,0);
+    private scrollDelta: number=0;
     public events:MouseEvents[]=[]
     leftClick: boolean=false;
     leftPress: boolean=false;
@@ -34,7 +37,9 @@ export default class MouseController{
         const del:Vector2=this.mouseDelta;
         return del;
     }
-
+    public getScrollDelta():number{
+        return this.scrollDelta;
+    }
     updateMousePosition(event: MouseEvent) {
         const rect = this._canvas.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
@@ -51,12 +56,19 @@ export default class MouseController{
         //     this.leftClick=true;
         // }
       }
+
+
+      updateMouseWheel(event: WheelEvent) {
+       this. scrollDelta+=event.deltaY*GameConfig.MouseWheelSpeedFactor;
+       console.log("this. scrollDelta: "+this. scrollDelta  )
+      }
    clerEvents(){
 
     // console.log("clerEvents")
         this.mouseDelta.x=0;
         this.mouseDelta.y=0;
         this.leftClick=false;
+        this. scrollDelta=0;
         // this.events=[];
     }
 

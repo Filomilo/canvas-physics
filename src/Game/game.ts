@@ -6,6 +6,7 @@ import MouseController, { MouseEvents } from './Controllers/MouseController'
 import { Vector2 } from 'three'
 import { compressNormals } from 'three/examples/jsm/utils/GeometryCompressionUtils.js'
 import type { IClickable } from './Interfaces/IClickable'
+import SimulationController from './Controllers/SimulationController'
 // import SimulationController from "./Controllers/SimulationController"
 
 export default class Game {
@@ -14,7 +15,7 @@ export default class Game {
 
   public _objectReferenceController: ObjectReferenceController = new ObjectReferenceController()
   public _MouseController!: MouseController
-  // public _SimulationController: SimulationController = new SimulationController(this)
+  public _SimulationController: SimulationController = new SimulationController(this)
 
   private time: number = 0
 
@@ -39,18 +40,19 @@ export default class Game {
   }
 
   private gameLoop() {
-    try {
-      this.time = new Date().getTime()
+    // try {
+      const time=new Date().getTime();
+      this.time =time;
       this.resolveEvents()
       this.update()
-      // this._SimulationController.simulate()
+      this._SimulationController.simulate()
       this.drawBackground()
       this.drawObjects()
       requestAnimationFrame(this.gameLoop.bind(this))
       this.clearEvents()
-    } catch (error) {
-      console.error('Error processgin game loop: ' + error)
-    }
+    // } catch (error) {
+    //   console.error('Error processgin game loop: ' + error)
+    // }
   }
 
   //#region EVENTS
@@ -78,6 +80,13 @@ export default class Game {
     this._canvas.addEventListener('mousedown', (event: MouseEvent) => {
       this.onMouseDown(event)
     })
+
+    this._canvas.addEventListener('wheel', (event: WheelEvent) => {
+      this.onMouseScroll(event)
+    })
+  }
+  onMouseScroll(event: WheelEvent) {
+    this._MouseController.updateMouseWheel(event)
   }
 
   private onMouseDown(event: MouseEvent) {

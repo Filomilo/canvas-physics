@@ -1,6 +1,7 @@
 import { Vector2 } from 'three'
 import { CalculationHelpes, minMax } from './CalculationHelpes'
 import { json } from 'stream/consumers'
+import { ICollidable } from '../Interfaces/ICollidable'
 
 export namespace AlgorithmsHelpers {
   export function isPointWithinShape(point: Vector2, shape: Vector2[]): boolean {
@@ -22,17 +23,17 @@ export namespace AlgorithmsHelpers {
     return is_in
   }
 
-  export function checkSasCollisionOnPolygons(pol1: Vector2[], pol2: Vector2[]): Vector2 | null {
-    const normals: Vector2[] = CalculationHelpes.getNormalsOfConnectedPoints(pol1).concat(
-      CalculationHelpes.getNormalsOfConnectedPoints(pol2)
-    )
-    // console.log('normals: ' + JSON.stringify(normals))
+
+  export function SasCollision(obj1: ICollidable, obj2: ICollidable): Vector2 | null
+  {
+    const normals: Vector2[] =obj1.getNormalsForCollision().concat(obj2.getNormalsForCollision());
     let minOverlap: number = Number.MAX_VALUE
     let minOverlapVectpr: Vector2 = new Vector2()
+
     for (let index = 0; index < normals.length; index++) {
       const N = normals[index]
-      const minMax1: minMax = CalculationHelpes.getMinMaxOfPointsOnAxis(pol1, N)
-      const minMax2: minMax = CalculationHelpes.getMinMaxOfPointsOnAxis(pol2, N)
+      const minMax1: minMax =  obj1.castObjectOntoNormal(N)  
+      const minMax2: minMax = obj2.castObjectOntoNormal(N)  
       const overlapLegnth = CalculationHelpes.getMinMaxOverlapLength(minMax1, minMax2)
       if (overlapLegnth === 0) {
         return null
@@ -48,4 +49,33 @@ export namespace AlgorithmsHelpers {
     }
     return minOverlapVectpr
   }
+
+  // export function checkSasCollisionOnPolygons(pol1: Vector2[], pol2: Vector2[]): Vector2 | null {
+  //   const normals: Vector2[] = CalculationHelpes.getNormalsOfConnectedPoints(pol1).concat(
+  //     CalculationHelpes.getNormalsOfConnectedPoints(pol2)
+  //   )
+  //   // console.log('normals: ' + JSON.stringify(normals))
+  //   let minOverlap: number = Number.MAX_VALUE
+  //   let minOverlapVectpr: Vector2 = new Vector2()
+  //   for (let index = 0; index < normals.length; index++) {
+  //     const N = normals[index]
+  //     const minMax1: minMax = CalculationHelpes.getMinMaxOfPointsOnAxis(pol1, N)
+  //     const minMax2: minMax = CalculationHelpes.getMinMaxOfPointsOnAxis(pol2, N)
+  //     const overlapLegnth = CalculationHelpes.getMinMaxOverlapLength(minMax1, minMax2)
+  //     if (overlapLegnth === 0) {
+  //       return null
+  //     } else {
+  //       if (minOverlap > overlapLegnth) {
+  //         minOverlap = overlapLegnth
+  //         minOverlapVectpr = new Vector2(
+  //           normals[index].x * overlapLegnth,
+  //           normals[index].y * overlapLegnth
+  //         )
+  //       }
+  //     }
+  //   }
+  //   return minOverlapVectpr
+  // }
+
+
 }

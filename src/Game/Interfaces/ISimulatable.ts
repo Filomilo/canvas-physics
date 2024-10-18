@@ -3,6 +3,7 @@ import { ITransformable } from "./ITransformable";
 
 export default interface ISimulatable extends ITransformable{
     Velocity: Vector2;
+    rotationSpeed:number;
     IsSimulatable: boolean
 }
 

@@ -94,6 +94,12 @@ export namespace CalculationHelpes {
 
   //do not use in calcauiton, its only to simply viusaliasiotn
 
+
+  export function castPointOnAxis(pt:Vector2, axis: Vector2): number
+  {
+return Math.abs(axis.dot(pt));
+  }
+
   export function getMinMaxOfPointsOnAxis(
     pts: Vector2[],
     axis: Vector2
@@ -102,7 +108,7 @@ export namespace CalculationHelpes {
     let min: number = Number.MAX_VALUE
 
     pts.forEach((pt: Vector2) => {
-      const len: number = Math.abs(axis.dot(pt))
+      const len: number =castPointOnAxis(pt,axis)  ;
       max = max < len ? len : max
       min = min > len ? len : min
     })
@@ -118,4 +124,10 @@ export namespace CalculationHelpes {
       return 0
     }
   }
+
+
+  export function getRotationFromVector(vec:Vector2): number{
+    return Math.atan2(vec.y,vec.x)
+  }
+
 }

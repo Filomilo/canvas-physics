@@ -15,7 +15,7 @@ export default class Point extends GameObject implements ITransformable, IDrawab
     this._Color = color
   }
   rotate(theta: number): void {
-    throw new Error('Method not implemented.')
+    
   }
 
   public position: Vector2

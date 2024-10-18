@@ -6,12 +6,14 @@ import { DrawHelpers } from '@/Game/Helpers/DrawHelpers'
 import GameObject from '../GameObjectBase'
 import { AlgorithmsHelpers } from '@/Game/Helpers/AlgorithmsHelpers'
 import { dot } from 'three/webgpu'
+import { ICollidable } from '@/Game/Interfaces/ICollidable'
+import CollidablePolygon from '../CollidablePolygon'
 
 class SasVisulaizer extends GameObject implements IDrawable {
-  private _polygon1!: Polygon
-  private _polygon2!: Polygon
+  private _polygon1!: CollidablePolygon
+  private _polygon2!: CollidablePolygon
 
-  constructor(polygon1: Polygon, polygon2: Polygon) {
+  constructor(polygon1: CollidablePolygon, polygon2: CollidablePolygon) {
     super()
     this._polygon1 = polygon1
     this._polygon2 = polygon2
@@ -90,7 +92,7 @@ class SasVisulaizer extends GameObject implements IDrawable {
     //   }
     // })
 
-    const collsionVector: Vector2 | null = AlgorithmsHelpers.checkSasCollisionOnPolygons(pts1, pts2)
+    const collsionVector: Vector2 | null = AlgorithmsHelpers.SasCollision(this._polygon1 as unknown as ICollidable, this._polygon2 as unknown as ICollidable)
     if (collsionVector !== null) {
       DrawHelpers.drawLines(ctx, pts1, 5, 'cyan')
       DrawHelpers.drawLines(ctx, pts2, 5, 'cyan')

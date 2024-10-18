@@ -1,8 +1,11 @@
+import { IAffector, implementsAffector } from '../Interfaces/IAffector'
 import { implementsClickable, type IClickable } from '../Interfaces/IClickable'
+import { ICollidable, implementsCollidable } from '../Interfaces/ICollidable'
 import { implementsDrawable, type IDrawable } from '../Interfaces/IDrawble'
 import { implementsHoverable, type IHoverable } from '../Interfaces/IHoverable'
 import { implementsMouseReactive, type IMouseReactive } from '../Interfaces/IMouseReactive'
 import { implementsPressable, type IPressable } from '../Interfaces/IPressable'
+import ISimulatable, { implementsSimulatable } from '../Interfaces/ISimulatable'
 // import ISimulatable, { implementsSimulatable } from "../Interfaces/ISimulatable";
 import { implementsTransformable, type ITransformable } from '../Interfaces/ITransformable'
 import { implementsUpdatable, type IUpdatable } from '../Interfaces/IUpatable'
@@ -17,7 +20,9 @@ export default class ObjectReferenceController {
   TransformableObjects: ITransformable[] = []
   MouseReactiveObjects: IMouseReactive[] = []
   UpdatableObjects: IUpdatable[] = []
-  //   SimulatableObjects: ISimulatable[] = []
+  SimulatableObjects: ISimulatable[] = []
+  AffectorObject: IAffector[] = []
+  CollidableObjects: ICollidable[]=[]
 
   public addObject(object: GameObject) {
     this.AllObjects.push(object)
@@ -46,8 +51,14 @@ export default class ObjectReferenceController {
     if (implementsUpdatable(object)) {
       this.UpdatableObjects.push(object as IUpdatable)
     }
-    // if (implementsSimulatable(object)) {
-    //   this.SimulatableObjects.push(object as ISimulatable)
-    // }
+    if (implementsSimulatable(object)) {
+      this.SimulatableObjects.push(object as ISimulatable)
+    }
+    if (implementsAffector(object)) {
+      this.AffectorObject.push(object as IAffector)
+    }
+    if (implementsCollidable(object)) {
+      this,this.CollidableObjects.push(object as ICollidable)
+    }
   }
 }
