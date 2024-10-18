@@ -11,10 +11,13 @@ import { CalculationHelpes, minMax } from "../Helpers/CalculationHelpes";
 
 export default class PhysicBall extends Ball implements ISimulatable,ICollidable {
 
-
+    IsSimulatable: boolean=true;
     constructor(pos:Vector2,radius: number=3,color:string="white")
     {
         super(pos,radius,color);
+    }
+    getCenterPoint(): Vector2 {
+        return new Vector2( this.position.x,this.position.y);
     }
     castObjectOntoNormal(N: Vector2): minMax {
         const pointOnAxis: number=CalculationHelpes.castPointOnAxis(this.position,N)
@@ -30,8 +33,10 @@ export default class PhysicBall extends Ball implements ISimulatable,ICollidable
     }
     rotationSpeed: number=0;
     Velocity: Vector2=new Vector2();
-    IsSimulatable: boolean=true;
 
-    
+    draw(ctx: CanvasRenderingContext2D): void {
+        super.draw(ctx)
+        console.log("Velocity: "+JSON.stringify( this.Velocity))
+    }
 
 }

@@ -21,7 +21,7 @@ this._game=game;
         this._game._objectReferenceController.SimulatableObjects.forEach((element: ISimulatable) => {
             if(element.IsSimulatable)
             {
-                // console.log("dt: "+dt)
+                console.log("simulate ")
                 this.applyAffectors(element)
                 this.applyVelocity(element)
                 this.resolveCollsions(element)
@@ -60,7 +60,9 @@ this._game=game;
               if(simulatable as unknown!==element as unknown){
                  const resolveVector:Vector2|null= AlgorithmsHelpers.SasCollision(simulatable as unknown as ICollidable, element as ICollidable)
                 if(resolveVector){
+                    console.log("resolveVector: "+JSON.stringify(resolveVector))
                     simulatable.Velocity.add(resolveVector)
+                    // simulatable.move(resolveVector)
                 }
               }
                

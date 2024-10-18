@@ -45,7 +45,7 @@ collider.rotate(0.55)
 collider.move(new Vector2(240, 400))
 
 game.addObject(new Gravity());
-game.addObject(new SasVisulaizer(actvieRec,collider))
+// game.addObject(new SasVisulaizer(actvieRec,collider))
 
 
 const ball: PhysicBall= new PhysicBall(new Vector2(200,30),20,"red");

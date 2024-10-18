@@ -5,14 +5,14 @@ import { Euler, Vector2 } from 'three'
 import { DrawHelpers } from '../Helpers/DrawHelpers'
 
 export default class Point extends GameObject implements ITransformable, IDrawable {
-  private _Color: string
+  protected _color: string
 
   constructor(pos: Vector2, radius: number = 3, color: string = 'white') {
     super()
     // console.log('Point constructor: ' + radius)
     this.position = pos
     this._radius = radius
-    this._Color = color
+    this._color = color
   }
   rotate(theta: number): void {
     

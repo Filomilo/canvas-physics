@@ -19,6 +19,9 @@ class CollidableRectangle extends Rectangle implements ICollidable{
     constructor(width: number, height:number,position: Vector2=new Vector2(0,0), color: string="white"){
         super(width,height,position,color)
     }
+    getCenterPoint(): Vector2 {
+       return this.getMidAvgPoint();
+    }
     dummy: number=0;
 
 }

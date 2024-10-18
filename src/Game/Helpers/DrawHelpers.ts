@@ -10,6 +10,7 @@ export namespace DrawHelpers {
   ) {
     // console.log("drawCircle: "+radius)
     ctx.fillStyle = color
+    ctx.lineWidth = 0;
     ctx.beginPath()
     ctx.arc(x, y, radius, 0, 2 * Math.PI)
     ctx.fill()

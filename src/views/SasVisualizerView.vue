@@ -14,6 +14,7 @@ import Game from "@/Game/Game";
 import NormalsVisualiser from "@/Game/Objects/Helpers/NormalsVisualiser";
 import SasVisulaizer from "@/Game/Objects/Helpers/SasVisulaizer";
 import MovablePolygon from "@/Game/Objects/MovablePolygon";
+import MovableBall from "@/Game/Objects/MoveableBall";
 import Point from "@/Game/Objects/Point";
 import Polygon from "@/Game/Objects/Polygon";
 import { Vector2 } from "three";
@@ -29,25 +30,30 @@ const polygon1: MovablePolygon = new MovablePolygon([
 ]);
 // polygon1.centerOrigin();
 // polygon1.resetTransoform();
-polygon1.rotate(0.7);
+// polygon1.rotate(0.7);
 polygon1.move(new Vector2(200, 200));
 
 const polygon2: MovablePolygon = new MovablePolygon([
     new Vector2(-100, 100),
     new Vector2(100, 100),
-    new Vector2(100, -100),
     new Vector2(-100, -100),
 ]);
-// polygon1.centerOrigin();
-// polygon1.resetTransoform();
-polygon2.rotate(0.1);
+// // polygon1.centerOrigin();
+// // polygon1.resetTransoform();
+// // polygon2.rotate(0.1);
 polygon2.move(new Vector2(500, 200));
 
 game.addObject(polygon1);
-game.addObject(new NormalsVisualiser(polygon1));
+// game.addObject(new NormalsVisualiser(polygon1));
 
-game.addObject(polygon2);
-game.addObject(new SasVisulaizer(polygon1, polygon2));
+const sphere: MovableBall = new MovableBall(new Vector2(200,400),10,"white");
+const sphere2: MovableBall = new MovableBall(new Vector2(200,700),10,"white");
+sphere.IsSimulatable=false;
+// game.addObject(polygon1);
+game.addObject(sphere);
+// game.addObject(sphere2);
+
+game.addObject(new SasVisulaizer(polygon1,sphere));
 
 // game.addObject(new MovablePolygon([new Vector2(100, 100), new Vector2(200, 200), new Vector2(200, 100)]))
 </script>

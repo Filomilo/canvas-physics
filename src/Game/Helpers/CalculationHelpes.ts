@@ -1,4 +1,5 @@
 import { Vector2 } from 'three'
+import { compressNormals } from 'three/examples/jsm/utils/GeometryCompressionUtils.js'
 import { atan2, cos, sin } from 'three/webgpu'
 
 export interface minMax {
@@ -77,7 +78,7 @@ export namespace CalculationHelpes {
     //  pointsIncludingConnectedEdge.push(pointsIncludingConnectedEdge[0])
     const normals: Vector2[] = []
     for (let index = 0; index < points.length; index++) {
-      const pt1 = new Vector2(points[index].x, points[index].y)
+      const pt1 = new Vector2(points[index% points.length].x, points[index% points.length].y)
       const pt2 = new Vector2(
         points[(index + 1) % points.length].x,
         points[(index + 1) % points.length].y
@@ -86,7 +87,7 @@ export namespace CalculationHelpes {
       // console.log(index + ': pt1: ' + JSON.stringify(pt1) + ' pt2: ' + JSON.stringify(pt2))
       const N = new Vector2(dir.y, -dir.x).normalize()
 
-      normals.push(N)
+      normals.push(N.normalize())
     }
     //  console.log('Dir: ' + JSON.stringify(normals))
     return normals
@@ -94,10 +95,18 @@ export namespace CalculationHelpes {
 
   //do not use in calcauiton, its only to simply viusaliasiotn
 
+let castingCounter=0;
 
-  export function castPointOnAxis(pt:Vector2, axis: Vector2): number
-  {
-return Math.abs(axis.dot(pt));
+  export function castPointOnAxis(pt: Vector2, axis: Vector2): number {
+    
+    const normalizedAxis = axis.normalize(); // Ensure axis has a length of 1
+    const casted:number= normalizedAxis.dot(pt);
+    if(castingCounter--<6 && axis.x!==0&& axis.y!==0)
+    {
+      // console.log("Casting "+JSON.stringify(pt)+" on axis "+JSON.stringify(axis)+" resulted in "+ casted)
+      castingCounter=1000;
+    }
+return casted;
   }
 
   export function getMinMaxOfPointsOnAxis(
