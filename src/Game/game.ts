@@ -16,7 +16,7 @@ export default class Game {
   public _objectReferenceController: ObjectReferenceController = new ObjectReferenceController()
   public _MouseController!: MouseController
   public _SimulationController: SimulationController = new SimulationController(this)
-
+  private dt: number = 0
   private time: number = 0
 
   public getWidthAndHeightOfCanvas(): Vector2 {
@@ -41,8 +41,7 @@ export default class Game {
 
   private gameLoop() {
     // try {
-      const time=new Date().getTime();
-      this.time =time;
+  
       this.resolveEvents()
       this.update()
       this._SimulationController.simulate()
@@ -50,6 +49,7 @@ export default class Game {
       this.drawObjects()
       requestAnimationFrame(this.gameLoop.bind(this))
       this.clearEvents()
+      
     // } catch (error) {
     //   console.error('Error processgin game loop: ' + error)
     // }
@@ -92,10 +92,13 @@ export default class Game {
   private onMouseDown(event: MouseEvent) {
     // console.log("onMouseDown")
     this._MouseController.addEvent(MouseEvents.PRESS)
+    this._MouseController.leftPress=true;
   }
 
   private onMouseUp(event: MouseEvent) {
+    // console.log("onMouseUp")
     this._MouseController.addEvent(MouseEvents.UNPRESS)
+    this._MouseController.leftPress=false;
   }
 
   private updateOnMouseMove(event: MouseEvent) {
@@ -130,6 +133,11 @@ export default class Game {
 
   private clearEvents() {
     this._MouseController.clerEvents()
+    const newtime=new Date().getTime();
+    // console.log("new Time: "+newtime)
+    this.dt=(newtime-this.time)/1000;
+    this.time =newtime;
+    
   }
 
   //#endregion
@@ -205,8 +213,8 @@ export default class Game {
   }
 
   private updateObjects() {
-    const dt = new Date().getTime() - this.time
-    this._objectReferenceController.UpdatableObjects.forEach((x) => x.update(dt))
+    // console.log("dt: "+this.dt)
+    this._objectReferenceController.UpdatableObjects.forEach((x) => x.update(this.dt))
   }
 
   private updateMousePosition() {}

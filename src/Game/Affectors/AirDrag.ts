@@ -9,9 +9,9 @@ export default class Gravity extends GameObject implements IAffector{
 super()
     }
     affect(simulatable: ISimulatable): void {
-     
-        // console.log("Gravity")
-        simulatable.addVelocity(new Vector2(0,GameConfig.Gravity*GameConfig.SimulationTimeStep))
+        simulatable.modifyVelocity((vel:Vector2)=>{
+            return vel.multiplyScalar(0.99)
+        })
     }
     
 }

@@ -21,7 +21,7 @@ this._game=game;
         this._game._objectReferenceController.SimulatableObjects.forEach((element: ISimulatable) => {
             if(element.IsSimulatable)
             {
-                console.log("simulate ")
+                // console.log("simulate ")
                 this.applyAffectors(element)
                 this.applyVelocity(element)
                 this.resolveCollsions(element)
@@ -38,8 +38,8 @@ this._game=game;
 
     private applyVelocity(simulateble: ISimulatable)
     {
-        simulateble.move(simulateble.Velocity);
-        simulateble.rotate(simulateble.rotationSpeed)
+        simulateble.applyVelocity()
+        simulateble.applyRotationSpeed()
     }
     private applyGravity(simulateble: ISimulatable)
     {
@@ -47,7 +47,8 @@ this._game=game;
     }
     private applyForce(simulatable:ISimulatable,vel: Vector2, dt: number)
 {
-    simulatable.Velocity.add(vel.multiply(new Vector2(dt,dt)));
+    simulatable.addVelocity(vel.multiply(new Vector2(dt,dt)))
+    // simulatable.Velocity.add(vel.multiply(new Vector2(dt,dt)));
 }
 
     private resolveCollsions(simulatable:ISimulatable)
@@ -60,8 +61,9 @@ this._game=game;
               if(simulatable as unknown!==element as unknown){
                  const resolveVector:Vector2|null= AlgorithmsHelpers.SasCollision(simulatable as unknown as ICollidable, element as ICollidable)
                 if(resolveVector){
-                    console.log("resolveVector: "+JSON.stringify(resolveVector))
-                    simulatable.Velocity.add(resolveVector)
+                    // console.log("resolveVector: "+JSON.stringify(resolveVector))
+                    // simulatable.Velocity.add(resolveVector)
+                    simulatable.addVelocity(resolveVector)
                     // simulatable.move(resolveVector)
                 }
               }

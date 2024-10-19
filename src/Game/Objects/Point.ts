@@ -8,6 +8,8 @@ export default class Point extends GameObject implements ITransformable, IDrawab
   protected _color: string
 
   constructor(pos: Vector2, radius: number = 3, color: string = 'white') {
+    if(!pos)
+      throw "position cannont be undefind"
     super()
     // console.log('Point constructor: ' + radius)
     this.position = pos
@@ -30,6 +32,6 @@ export default class Point extends GameObject implements ITransformable, IDrawab
 
   draw(ctx: CanvasRenderingContext2D): void {
     // console.log("Draw: "+this._Color)
-    DrawHelpers.drawCircle(ctx, this.position.x, this.position.y, this._radius, this._Color)
+    DrawHelpers.drawCircle(ctx, this.position.x, this.position.y, this._radius, this._color)
   }
 }

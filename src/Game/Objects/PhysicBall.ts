@@ -16,6 +16,21 @@ export default class PhysicBall extends Ball implements ISimulatable,ICollidable
     {
         super(pos,radius,color);
     }
+    modifyVelocity(modifyFuntion: (vel: Vector2) => Vector2): void {
+        this.Velocity=modifyFuntion(this.Velocity)
+    }
+    addVelocity(vel: Vector2): void {
+     this.Velocity.add(vel)
+    }
+    addRotationSpeed(rotSpeed: number): void {
+       this.rotationSpeed+=rotSpeed
+    }
+    applyVelocity(): void {
+       this.move(this.Velocity)
+    }
+    applyRotationSpeed(): void {
+       this.rotate(this.rotationSpeed)
+    }
     getCenterPoint(): Vector2 {
         return new Vector2( this.position.x,this.position.y);
     }
@@ -36,7 +51,7 @@ export default class PhysicBall extends Ball implements ISimulatable,ICollidable
 
     draw(ctx: CanvasRenderingContext2D): void {
         super.draw(ctx)
-        console.log("Velocity: "+JSON.stringify( this.Velocity))
+        // console.log("Velocity: "+JSON.stringify( this.Velocity))
     }
 
 }

@@ -7,7 +7,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'main',
-      component: () => import('@/views/PhysicDemoView.vue')
+      component: () => import('@/views/FloorTest.vue')
+    },
+    {
+      path: '/FloorTest',
+      name: 'v',
+      component: () => import('@/views/FloorTest.vue')
     },
     {
       path: '/SasVisualizerView',

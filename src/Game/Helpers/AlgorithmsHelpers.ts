@@ -56,9 +56,9 @@ export namespace AlgorithmsHelpers {
     const center1: Vector2=obj1.getCenterPoint();
     const center2: Vector2=obj2.getCenterPoint();
     const diff=center1.sub(center2);
-    console.log("minOverlapVectpr: "+JSON.stringify(minOverlapVectpr))
+    // console.log("minOverlapVectpr: "+JSON.stringify(minOverlapVectpr))
 
-    console.log("diff: "+JSON.stringify(diff))
+    // console.log("diff: "+JSON.stringify(diff))
     if(diff.x<0 && minOverlapVectpr.x>0)
     {
       minOverlapVectpr= new Vector2(-minOverlapVectpr.x,minOverlapVectpr.y);

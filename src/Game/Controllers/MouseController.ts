@@ -29,7 +29,7 @@ export default class MouseController{
     public getMousePostion(): Vector2
     {
         const pos:Vector2=this.mousePosition;
-        return pos;
+        return new Vector2(pos.x,pos.y);
     }
 
     public  getMouseDelta(): Vector2
@@ -48,9 +48,10 @@ export default class MouseController{
        
         this.mouseDelta.x+=mouseX-this.mousePosition.x;
         this.mouseDelta.y+=mouseY-this.mousePosition.y;
-        // console.log("this.mouseDelta: "+JSON.stringify(this.mouseDelta))
         this.mousePosition.x=mouseX;
         this.mousePosition.y=mouseY;
+        // console.log("this.mousePosition: "+JSON.stringify(this.mousePosition))
+
         // if(event.button === 0)
         // {
         //     this.leftClick=true;
@@ -76,5 +77,8 @@ export default class MouseController{
         // console.log(event)
        this.events.push(event)
       }
-    
+      getMouseClicked():boolean
+      {
+        return this.leftPress
+      }
 }

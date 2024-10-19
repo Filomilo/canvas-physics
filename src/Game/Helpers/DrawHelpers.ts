@@ -12,7 +12,7 @@ export namespace DrawHelpers {
     ctx.fillStyle = color
     ctx.lineWidth = 0;
     ctx.beginPath()
-    ctx.arc(x, y, radius, 0, 2 * Math.PI)
+    ctx.arc(x, y, radius/2, 0, 2 * Math.PI)
     ctx.fill()
   }
   export function drawLine(

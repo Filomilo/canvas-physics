@@ -10,9 +10,9 @@ export default class Ball extends Point {
 
     constructor(pos:Vector2,radius: number=3,color:string="white")
     {
-        console.log("Ball constructor")
+        // console.log("Ball constructor")
         super(pos,radius,color);
-        console.log("Ball constructor End")
+        // console.log("Ball constructor End")
     }
 
 
