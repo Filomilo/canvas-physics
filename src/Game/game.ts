@@ -43,8 +43,9 @@ export default class Game {
     // try {
   
       this.resolveEvents()
-      this.update()
+
       this._SimulationController.simulate()
+      this.update()
       this.drawBackground()
       this.drawObjects()
       requestAnimationFrame(this.gameLoop.bind(this))

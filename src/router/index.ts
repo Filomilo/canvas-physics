@@ -7,8 +7,16 @@ const router = createRouter({
     {
       path: '/',
       name: 'main',
-      component: () => import('@/views/FloorTest.vue')
+      component: () => import('@/views/SpringSimulationTest.vue')
     },
+    {
+      path: '/SpringSimulationTest',
+      name: 'v',
+      component: () => import('@/views/SpringSimulationTest.vue')
+    },
+
+
+    
     {
       path: '/FloorTest',
       name: 'v',
