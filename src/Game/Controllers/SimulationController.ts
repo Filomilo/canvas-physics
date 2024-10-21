@@ -6,6 +6,7 @@ import { IAffector } from "../Interfaces/IAffector";
 import { AlgorithmsHelpers } from "../Helpers/AlgorithmsHelpers";
 import { ICollidable, implementsCollidable } from "../Interfaces/ICollidable";
 import Polygon from "../Objects/Polygon";
+import { implementsTransformable, ITransformable } from "../Interfaces/ITransformable";
 
 class SimulationController{
 
@@ -18,6 +19,7 @@ this._game=game;
 
     public simulate()
     {
+        // console.log("Colliders: "+this._game._objectReferenceController.CollidableObjects.length)
         this._game._objectReferenceController.SimulatableObjects.forEach((element: ISimulatable) => {
             if(element.IsSimulatable)
             {
@@ -54,17 +56,33 @@ this._game=game;
     private resolveCollsions(simulatable:ISimulatable)
     {
         // console.log("this._game._objectReferenceController.CollidableObjects: "+this._game._objectReferenceController.CollidableObjects.length)
-
         if(implementsCollidable(simulatable))
         {
+            
             this._game._objectReferenceController.CollidableObjects.forEach(element => {
               if(simulatable as unknown!==element as unknown){
+                const isColsionWIthSimultabel=implementsCollidable(element);
+
                  const resolveVector:Vector2|null= AlgorithmsHelpers.SasCollision(simulatable as unknown as ICollidable, element as ICollidable)
                 if(resolveVector){
                     // console.log("resolveVector: "+JSON.stringify(resolveVector))
                     // simulatable.Velocity.add(resolveVector)
-                    simulatable.addVelocity(resolveVector)
-                    // simulatable.move(resolveVector)
+                    if(implementsTransformable(simulatable)){
+                                            (simulatable as unknown as ITransformable).move(resolveVector)
+
+                    }
+                    simulatable.modifyVelocity((vel:Vector2)=>{
+                       const force: number=isColsionWIthSimultabel?vel.length()/2:vel.length();
+                        return resolveVector.clone().normalize().multiplyScalar(force)
+                    })
+// if(isColsionWIthSimultabel)
+// {
+//     const sim:ISimulatable=element as unknown as ISimulatable;
+//     sim.modifyVelocity((vel:Vector2)=>{
+//         const force: number=isColsionWIthSimultabel?vel.length()/2:vel.length();
+//          return resolveVector.clone().normalize().multiplyScalar(-force)
+//      })
+// }
                 }
               }
                

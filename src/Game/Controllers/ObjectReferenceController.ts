@@ -24,6 +24,12 @@ export default class ObjectReferenceController {
   AffectorObject: IAffector[] = []
   CollidableObjects: ICollidable[]=[]
 
+  public addCollider(collider: ICollidable)
+  {
+    this.CollidableObjects.push(collider);
+  }
+  
+
   public addObject(object: GameObject) {
     this.AllObjects.push(object)
     if (implementsClickable(object)) {

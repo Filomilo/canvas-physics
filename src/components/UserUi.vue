@@ -7,6 +7,14 @@
                         <i class="pi pi-chevron-up" style="font-size: 2rem"></i>
                     </Button>
                 </template>
+                <template #item="{ item, toggleCallback }">
+                    <div class="flex flex-col items-center justify-between gap-2 p-2 border rounded border-surface-200 dark:border-surface-700 w-20 cursor-pointer" @click="toggleCallback">
+                        <span :class="item.icon" />
+                        <span>
+                            {{ item.label }}
+                        </span>
+                    </div>
+                </template>
             </SpeedDial>
         </div>
     </div>
@@ -24,7 +32,31 @@ const router = useRouter();
 
 const items = ref([
     {
-        label: 'SasVisualizerView',
+        label: 'Floor Test',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("FloorTest")
+            // window.location.href = 'https://vuejs.org/'
+        }
+    },
+    {
+        label: 'Spring Simulation Test',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("SpringSimulationTest")
+            // window.location.href = 'https://vuejs.org/'
+        }
+    },
+    {
+        label: 'Physic Demo ',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("PhysicDemoView")
+            // window.location.href = 'https://vuejs.org/'
+        }
+    },
+    {
+        label: 'Sas Visualizer',
         icon: 'pi pi-link',
         command: () => {
             router.push("SasVisualizerView")
@@ -32,36 +64,19 @@ const items = ref([
         }
     },
     {
-        label: 'CollisionsDemo',
-        icon: 'pi pi-shield',
+        label: 'Shapes Demo ',
+        icon: 'pi pi-link',
         command: () => {
-            router.push("CollisionsDemo")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
-        label: 'PhysicDemoView',
-        icon: 'pi pi-flag',
-        command: () => {
-            router.push("PhysicDemoView")
+            router.push("ShapesDemoView")
             // window.location.href = 'https://vuejs.org/'
         }
     }
     ,
     {
-        label: 'ballsDemo',
-        icon: 'pi pi-circle',
+        label: 'Spring Simulation ',
+        icon: 'pi pi-link',
         command: () => {
-            router.push("ballsDemo")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    }
-    ,
-    {
-        label: 'ShapesDemo',
-        icon: 'pi pi-box',
-        command: () => {
-            router.push("ShapesDemo")
+            router.push("SpringSimulationTest")
             // window.location.href = 'https://vuejs.org/'
         }
     }

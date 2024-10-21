@@ -9,9 +9,9 @@ import { DrawHelpers } from "@/Game/Helpers/DrawHelpers";
 
 export default class SpringLine extends GameObject implements IDrawable,ISimulatable,IUpdatable{
 
-    private _node1:SpringNode;
-    private _node2:SpringNode;
-    private _length: number;
+    protected _node1:SpringNode;
+    protected _node2:SpringNode;
+    protected _length: number;
 
     constructor(node1: SpringNode,node2: SpringNode)
     {
@@ -22,7 +22,7 @@ export default class SpringLine extends GameObject implements IDrawable,ISimulat
         console.log("_length: "+this._length)
     }
     draw(ctx: CanvasRenderingContext2D): void {
-       DrawHelpers.DrawLine(ctx,this._node1.position,this._node2.position)
+       DrawHelpers.DrawLine(ctx,this._node1.position,this._node2.position,5,"yellow")
     }
     visible: boolean=true;
     update(dt: number): void {
@@ -69,7 +69,9 @@ export default class SpringLine extends GameObject implements IDrawable,ISimulat
         }
     }
     modifyVelocity(modifyFuntion: (vel: Vector2) => Vector2): void {
-        throw new Error("Method not implemented.");
+        this._node1.modifyVelocity(modifyFuntion)
+        this._node2.modifyVelocity(modifyFuntion)
+
     }
     addVelocity(vel: Vector2): void {
         throw new Error("Method not implemented.");

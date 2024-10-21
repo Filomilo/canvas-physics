@@ -13,8 +13,8 @@ export default class Spring
 extends GameObject
 implements IDrawable, ISimulatable, IUpdatable
 {   
-    private _nodes: SpingNode[]=[];
-    private _lines: SpringLine[]=[];
+    protected _nodes: SpingNode[]=[];
+    protected _lines: SpringLine[]=[];
 
 
 

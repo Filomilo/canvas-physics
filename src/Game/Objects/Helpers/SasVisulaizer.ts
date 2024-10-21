@@ -77,7 +77,7 @@ const additon=200;
       if(typeof ((this._obj1 as any).getTransformedPoints)==="function")
       {
 
-        console.log("collsionVector: "+JSON.stringify(collsionVector))
+        // console.log("collsionVector: "+JSON.stringify(collsionVector))
 
         const pol:Polygon=(this._obj1 as unknown as Polygon);
         DrawHelpers.drawLines(ctx,(this._obj1 as unknown as Polygon).getTransformedPoints(),4,"yellow")

@@ -139,4 +139,9 @@ return casted;
     return Math.atan2(vec.y,vec.x)
   }
 
+
+    export function getNormalOfVector(dir: Vector2):Vector2 {
+      const N = new Vector2(dir.y, -dir.x).normalize()
+      return N;
+    }
 }

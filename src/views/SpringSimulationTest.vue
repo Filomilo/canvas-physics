@@ -14,20 +14,24 @@ import Gravity from '@/Game/Affectors/Gravity';
 import Game from '@/Game/Game';
   import OnMousePartileEmitter from '@/Game/Objects/Particles/Emitters/OnMousePartileEmitter';
   import ParticleSolver from '@/Game/Objects/Particles/ParticleSolver';
+import PhysicBall from '@/Game/Objects/PhysicBall';
+import CollidableSpring from '@/Game/Objects/SpringSimulation/CollidableSpring';
 import SpingNode from '@/Game/Objects/SpringSimulation/SpingNode';
 import Spring from '@/Game/Objects/SpringSimulation/Spring';
   import GameComponent from '@/components/GameComponent.vue';
 import { Vector2 } from 'three';
+import SasVisualizerView from './SasVisualizerView.vue';
   
 
-  const startPosition: Vector2=new Vector2(100,100);
+  const startPosition: Vector2=new Vector2(100,700);
   const endPosition: Vector2=new Vector2(500,500);
   const numberOFSegments=10;
   const moveVec:Vector2=endPosition.clone().sub(startPosition).divideScalar(numberOFSegments)
 
   const game: Game = new Game();
-  const spring: Spring=new Spring(); 
-  const node1: SpingNode=new SpingNode(new Vector2(100,100));
+  const spring: CollidableSpring=new CollidableSpring(); 
+  game.addObject(spring)
+  const node1: SpingNode=new SpingNode(startPosition);
   node1.IsSimulatable=false;
   spring.addSpringNode(node1)
 
@@ -42,9 +46,9 @@ import { Vector2 } from 'three';
   endNode.IsSimulatable=false;
   spring.addSpringNode(endNode)
 
-  game.addObject(spring)
   game.addObject(new Gravity())
   game.addObject(new AirDrag(1.02))
-
+  const ball: PhysicBall= new PhysicBall(new Vector2(200,30),20,"red");
+  game.addObject(ball)
   </script>
   

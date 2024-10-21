@@ -7,6 +7,7 @@ import { Vector2 } from 'three'
 import { compressNormals } from 'three/examples/jsm/utils/GeometryCompressionUtils.js'
 import type { IClickable } from './Interfaces/IClickable'
 import SimulationController from './Controllers/SimulationController'
+import { ICollidable } from './Interfaces/ICollidable'
 // import SimulationController from "./Controllers/SimulationController"
 
 export default class Game {
@@ -245,4 +246,5 @@ export default class Game {
     obj.game = this
     // console.log('type: ' + typeof obj)
   }
+
 }

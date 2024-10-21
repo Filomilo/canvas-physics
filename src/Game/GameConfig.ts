@@ -5,5 +5,6 @@ export namespace GameConfig{
     export let Gravity: number=9.80665;
     export let MouseWheelSpeedFactor: number=0.001;
     export let ParticleSolverLimit: number=1000;
+    export let speedLimit: number=5;
 
 }

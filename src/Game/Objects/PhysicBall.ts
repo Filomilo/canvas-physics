@@ -8,6 +8,7 @@ import Ball from "./Ball";
 import ISimulatable from "../Interfaces/ISimulatable";
 import { ICollidable } from "../Interfaces/ICollidable";
 import { CalculationHelpes, minMax } from "../Helpers/CalculationHelpes";
+import { GameConfig } from "../GameConfig";
 
 export default class PhysicBall extends Ball implements ISimulatable,ICollidable {
 
@@ -18,9 +19,13 @@ export default class PhysicBall extends Ball implements ISimulatable,ICollidable
     }
     modifyVelocity(modifyFuntion: (vel: Vector2) => Vector2): void {
         this.Velocity=modifyFuntion(this.Velocity)
+        this.Velocity=this.Velocity.length()>GameConfig.speedLimit?this.Velocity.normalize().multiplyScalar(GameConfig.speedLimit):this.Velocity;
+
     }
     addVelocity(vel: Vector2): void {
+        
      this.Velocity.add(vel)
+     this.Velocity=this.Velocity.length()>GameConfig.speedLimit?this.Velocity.normalize().multiplyScalar(GameConfig.speedLimit):this.Velocity;
     }
     addRotationSpeed(rotSpeed: number): void {
        this.rotationSpeed+=rotSpeed
