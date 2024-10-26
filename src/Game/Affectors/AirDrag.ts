@@ -8,7 +8,6 @@ export default class Gravity extends GameObject implements IAffector{
     private _power:number=0;
 
     constructor(power: number){
- 
 super()
 this._power=power;
     }

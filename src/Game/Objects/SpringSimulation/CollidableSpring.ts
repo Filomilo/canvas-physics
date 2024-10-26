@@ -1,6 +1,7 @@
 import { ICollidable } from "@/Game/Interfaces/ICollidable";
 import CollidableSpringLine from "./CollidableSpringLine";
 import Spring from "./Spring"
+import SpingNode from "./SpingNode";
 
 export default class CollidableSpring extends Spring {
     public addSpringNode(node: SpingNode){

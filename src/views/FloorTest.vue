@@ -47,7 +47,7 @@ game.addObject(collider)
 collider.move(new Vector2(240, 700))
 
 game.addObject(new Gravity());
-game.addObject(new AirDrag());
+game.addObject(new AirDrag(1.09));
 // game.addObject(new SasVisulaizer(actvieRec,collider))
 
 
