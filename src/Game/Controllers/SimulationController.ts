@@ -65,7 +65,7 @@ class SimulationController {
             simulatable.modifyVelocity((vel: Vector2) => {
               //   return vel
               if (simulatable.getWeight() === 0) return vel
-              const force: number = isColsionWIthSimultabel ? vel.length() / 2 : vel.length()
+              const force: number = vel.length() * 0.8
               return resolveVector
                 .clone()
                 .normalize()

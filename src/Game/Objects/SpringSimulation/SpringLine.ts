@@ -60,9 +60,9 @@ export default class SpringLine extends GameObject implements IDrawable, ISimula
           })
         }
       }
+      feedBackApply(this._node1, this._node2)
       feedBackApply(this._node2, this._node1)
 
-      feedBackApply(this._node1, this._node2)
       //   const afterdist = this._node2.position.distanceTo(this._node1.position)
       //   // console.log("afterdist: "+afterdist)
       //   if (Math.abs(afterdist - this._length) > 0.001) {
