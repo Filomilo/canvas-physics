@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import LoadingPanel from './components/LoadingPanel.vue';
 
 import UserUi from './components/UserUi.vue';
+import { ref } from 'vue';
+
+import { useLoading } from '@/States/useLoading';
+const { loadingVisible } = useLoading();
 </script>
 
 <template>
   <!-- <header> -->
+  <LoadingPanel v-if="loadingVisible" />
   <UserUi />
   <!-- </header> -->
 

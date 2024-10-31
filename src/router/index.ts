@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useLoading } from '@/States/useLoading'
+const { loadingVisible } = useLoading()
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'main',
-      component: () => import('@/views/SpringSimulationTest.vue')
+      redirect: '/SpringSimulationTest'
     },
     {
       path: '/SpringSimulationTest',
@@ -19,7 +20,6 @@ const router = createRouter({
       component: () => import('@/views/PhysicDemoView.vue')
     },
 
-    
     {
       path: '/FloorTest',
       name: 'FloorTest',
@@ -39,8 +39,20 @@ const router = createRouter({
       path: '/ShapesDemoView',
       name: 'ShapesDemoView',
       component: () => import('@/views/ShapesDemoView.vue')
+    },
+    {
+      path: '/MovableSpringTest',
+      name: 'MovableSpringTest',
+      component: () => import('@/views/MovableSpringTest.vue')
     }
   ]
 })
 
+router.beforeEach(() => {
+  loadingVisible.value = true
+})
+
+router.afterEach(() => {
+  loadingVisible.value = false
+})
 export default router

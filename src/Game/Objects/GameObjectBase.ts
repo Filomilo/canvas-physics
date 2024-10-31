@@ -1,8 +1,9 @@
 import Game from '@/Game/Game'
-import { implementsHoverable } from '../Interfaces/IHoverable'
 
 export default class GameObject {
   public game?: Game
-
+  public getChildObjects(): GameObject[] {
+    return []
+  }
   constructor() {}
 }

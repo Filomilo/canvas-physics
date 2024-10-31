@@ -8,6 +8,7 @@ import { compressNormals } from 'three/examples/jsm/utils/GeometryCompressionUti
 import type { IClickable } from './Interfaces/IClickable'
 import SimulationController from './Controllers/SimulationController'
 import { ICollidable } from './Interfaces/ICollidable'
+import { stringify, parse } from 'flatted'
 // import SimulationController from "./Controllers/SimulationController"
 
 export default class Game {
@@ -42,16 +43,16 @@ export default class Game {
 
   private gameLoop() {
     // try {
-  
-      this.resolveEvents()
 
-      this._SimulationController.simulate()
-      this.update()
-      this.drawBackground()
-      this.drawObjects()
-      requestAnimationFrame(this.gameLoop.bind(this))
-      this.clearEvents()
-      
+    this.resolveEvents()
+
+    this._SimulationController.simulate()
+    this.update()
+    this.drawBackground()
+    this.drawObjects()
+    requestAnimationFrame(this.gameLoop.bind(this))
+    this.clearEvents()
+
     // } catch (error) {
     //   console.error('Error processgin game loop: ' + error)
     // }
@@ -94,13 +95,13 @@ export default class Game {
   private onMouseDown(event: MouseEvent) {
     // console.log("onMouseDown")
     this._MouseController.addEvent(MouseEvents.PRESS)
-    this._MouseController.leftPress=true;
+    this._MouseController.leftPress = true
   }
 
   private onMouseUp(event: MouseEvent) {
     // console.log("onMouseUp")
     this._MouseController.addEvent(MouseEvents.UNPRESS)
-    this._MouseController.leftPress=false;
+    this._MouseController.leftPress = false
   }
 
   private updateOnMouseMove(event: MouseEvent) {
@@ -135,11 +136,10 @@ export default class Game {
 
   private clearEvents() {
     this._MouseController.clerEvents()
-    const newtime=new Date().getTime();
+    const newtime = new Date().getTime()
     // console.log("new Time: "+newtime)
-    this.dt=(newtime-this.time)/1000;
-    this.time =newtime;
-    
+    this.dt = (newtime - this.time) / 1000
+    this.time = newtime
   }
 
   //#endregion
@@ -244,7 +244,10 @@ export default class Game {
     // console.log('add object: ' + JSON.stringify(obj))
     this._objectReferenceController.addObject(obj)
     obj.game = this
-    // console.log('type: ' + typeof obj)
+    // console.log(`CHildren: ${JSON.stringify(obj.getChildObjects())}`)
+    obj.getChildObjects().forEach((element: GameObject) => {
+      this.addObject(element)
+    })
+    // console.log('this._objectReferenceController: ' + stringify(this._objectReferenceController))
   }
-
 }

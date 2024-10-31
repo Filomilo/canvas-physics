@@ -8,7 +8,8 @@
                     </Button>
                 </template>
                 <template #item="{ item, toggleCallback }">
-                    <div class="flex flex-col items-center justify-between gap-2 p-2 border rounded border-surface-200 dark:border-surface-700 w-20 cursor-pointer" @click="toggleCallback">
+                    <div class="flex flex-col items-center justify-between gap-2 p-2 border rounded border-surface-200 dark:border-surface-700 w-20 cursor-pointer"
+                        @click="toggleCallback">
                         <span :class="item.icon" />
                         <span>
                             {{ item.label }}
@@ -77,6 +78,15 @@ const items = ref([
         icon: 'pi pi-link',
         command: () => {
             router.push("SpringSimulationTest")
+            // window.location.href = 'https://vuejs.org/'
+        }
+    }
+    ,
+    {
+        label: 'Movable Spring Test ',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("MovableSpringTest")
             // window.location.href = 'https://vuejs.org/'
         }
     }
