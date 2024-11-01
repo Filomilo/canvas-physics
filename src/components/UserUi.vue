@@ -41,14 +41,6 @@ const items = ref([
         }
     },
     {
-        label: 'Spring Simulation Test',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("SpringSimulationTest")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
         label: 'Physic Demo ',
         icon: 'pi pi-link',
         command: () => {
@@ -87,6 +79,22 @@ const items = ref([
         icon: 'pi pi-link',
         command: () => {
             router.push("MovableSpringTest")
+            // window.location.href = 'https://vuejs.org/'
+        }
+    },
+    {
+        label: 'Particle Test ',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("ParticleTest")
+            // window.location.href = 'https://vuejs.org/'
+        }
+    },
+    {
+        label: 'Fan Test ',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("FanTest")
             // window.location.href = 'https://vuejs.org/'
         }
     }

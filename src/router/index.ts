@@ -49,6 +49,11 @@ const router = createRouter({
       path: '/FanTest',
       name: 'FanTest',
       component: () => import('@/views/FanTest.vue')
+    },
+    {
+      path: '/ParticleTest',
+      name: 'ParticleTest',
+      component: () => import('@/views/ParticleSimulationView.vue')
     }
   ]
 })

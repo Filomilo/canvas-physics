@@ -43,7 +43,7 @@ export default class FanForce extends GameObject implements ITransformable {
       const distanceFromFanSorce = Math.abs(pos.y - this._position.y)
       const normalizeDistance = 1 - distanceFromFanSorce / this._heightRange
       const ForceToApply = normalizeDistance * this._force
-      console.log(`normalizeDistance ${normalizeDistance}`)
+      //   console.log(`normalizeDistance ${normalizeDistance}`)
       simulatable.addVelocity(new Vector2(0, -ForceToApply))
     }
   }

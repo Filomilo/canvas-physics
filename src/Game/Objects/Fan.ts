@@ -25,9 +25,9 @@ class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
     .addAtrributeEditMethod((particle: Particle) => {
       // console.log('change Scale')
       const ageRatio: number = particle.age / particle.life
-      particle._radius = (1 - ageRatio) * 25
+      particle._radius = (1 - ageRatio) * 20
     })
-  private force: FanForce = new FanForce(new Vector2(0, -30), 50, 300, 0.8)
+  private force: FanForce = new FanForce(new Vector2(0, -30), 50, 300, 0.6)
 
   private components: GameObject[] = [
     this.particleSolver,
