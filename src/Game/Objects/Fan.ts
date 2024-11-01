@@ -10,6 +10,7 @@ import { AlgorithmsHelpers } from '../Helpers/AlgorithmsHelpers'
 import ParticleSolver from './Particles/ParticleSolver'
 import LinePartilceEmitter from './Particles/Emitters/LinePartilceEmitter'
 import Particle from './Particles/Particle'
+import FanForce from '@/Game/Affectors/FanForce'
 
 class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
   private mainBody: Rectangle = new Rectangle(50, 50, new Vector2(0), 'yellow')
@@ -26,10 +27,12 @@ class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
       const ageRatio: number = particle.age / particle.life
       particle._radius = (1 - ageRatio) * 25
     })
+  private force: FanForce = new FanForce(new Vector2(0, -30), 50, 300, 0.8)
 
   private components: GameObject[] = [
     this.particleSolver,
     this.mainBody,
+    this.force as unknown as GameObject,
     new Rectangle(40, 10, new Vector2(30, -30), 'yellow').rotate(0.5) as unknown as GameObject,
     new Rectangle(40, 10, new Vector2(-30, -30), 'yellow').rotate(-0.5) as unknown as GameObject,
 

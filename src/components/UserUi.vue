@@ -111,5 +111,14 @@ const items = ref([
     pointer-events: all
 }
 
+.p-speeddial-list {
+    display: none;
+    max-height: fit-content;
+}
+
+.p-speeddial-item {
+    height: fit-content;
+}
+
 .buttonFloat {}
 </style>

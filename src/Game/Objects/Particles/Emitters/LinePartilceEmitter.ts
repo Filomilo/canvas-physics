@@ -47,7 +47,7 @@ export default class LinePartilceEmitter extends GameObject implements IEmitter,
     const velocity = new Vector2(0, -1).multiplyScalar(this._speed)
     const newParitcle: Particle = new Particle(newParticlePostion, 3, 'white')
     newParitcle._vel = velocity
-    newParitcle.life = this._partcleLife
+    newParitcle.life = this._partcleLife + (randFloat(-1, 1) * this._partcleLife) / 2
     return [newParitcle]
   }
 }
