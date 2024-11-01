@@ -1,1 +1,0 @@
-import{G as e}from"./GameComponent.vue_vue_type_style_index_0_lang-C4RZRmDn.js";class a extends e{_power=0;constructor(r){super(),this._power=r}affect(r){r.modifyVelocity(t=>t.multiplyScalar(1/this._power))}}export{a as G};
