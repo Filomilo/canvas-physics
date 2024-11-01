@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/SpringSimulationTest'
+      redirect: '/FanTest'
     },
     {
       path: '/SpringSimulationTest',
@@ -44,6 +44,11 @@ const router = createRouter({
       path: '/MovableSpringTest',
       name: 'MovableSpringTest',
       component: () => import('@/views/MovableSpringTest.vue')
+    },
+    {
+      path: '/FanTest',
+      name: 'FanTest',
+      component: () => import('@/views/FanTest.vue')
     }
   ]
 })

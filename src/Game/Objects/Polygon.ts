@@ -17,14 +17,16 @@ export default class Polygon extends GameObject implements IDrawable, ITransform
   transformation: Matrix3 = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1)
   localTransformation: Matrix3 = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1)
 
-  move(moveVector: Vector2): void {
+  move(moveVector: Vector2): ITransformable {
     // console.log('move')
     this.transformation.translate(moveVector.x, moveVector.y)
     // console.log('move: ' + JSON.stringify(moveVector))
+    return this as unknown as ITransformable
   }
-  rotate(theta: number): void {
+  rotate(theta: number): ITransformable {
     // console.log('theta; ' + theta)
     this.localTransformation.rotate(theta)
+    return this as unknown as ITransformable
   }
 
   public getTransformedPoints(): Vector2[] {

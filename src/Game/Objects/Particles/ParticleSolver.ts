@@ -12,6 +12,7 @@ export default class ParticleSolver
   extends GameObject
   implements IDrawable, ISimulatable, IUpdatable
 {
+  private attributeEditMehotd: ((particle: Particle) => void)[] = []
   visible: boolean = true
   private _Emitters: IEmitter[] = []
   private _Particles: Particle[] = []
@@ -53,8 +54,11 @@ export default class ParticleSolver
   private updateParticles(dt: number) {
     if (dt < 0) throw 'dt should not be less tahn zero'
     // console.log("updateParticles: "+dt)
-
+    // console.log(`AmtOfParticles: ${this._Particles.length}`)
     this._Particles.forEach((particle: Particle) => {
+      this.attributeEditMehotd.forEach((mehtod: (particle: Particle) => void) => {
+        mehtod(particle)
+      })
       particle.age += dt
       particle.update(dt)
       particle.applyVelocity()
@@ -74,12 +78,6 @@ export default class ParticleSolver
     throw new Error('Method not implemented.')
   }
   IsSimulatable: boolean = false
-  move(moveVector: Vector2): void {
-    throw new Error('Method not implemented.')
-  }
-  rotate(theta: number): void {
-    throw new Error('Method not implemented.')
-  }
 
   draw(ctx: CanvasRenderingContext2D): void {
     for (let index = 0; index < this._Particles.length; index++) {
@@ -89,8 +87,14 @@ export default class ParticleSolver
     }
   }
 
-  public addEmitter(emitter: IEmitter) {
+  public addEmitter(emitter: IEmitter): ParticleSolver {
     ;(emitter as unknown as GameObject).game = this.game
     this._Emitters.push(emitter)
+    return this
+  }
+
+  public addAtrributeEditMethod(func: (particle: Particle) => void): ParticleSolver {
+    this.attributeEditMehotd.push(func)
+    return this
   }
 }

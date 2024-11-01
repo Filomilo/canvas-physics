@@ -64,6 +64,6 @@ export default class ObjectReferenceController {
     if (implementsCollidable(object)) {
       this, this.CollidableObjects.push(object as unknown as ICollidable)
     }
-    console.log('SimulatableObjects: ' + this.SimulatableObjects.length)
+    // console.log('SimulatableObjects: ' + this.SimulatableObjects.length)
   }
 }
