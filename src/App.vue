@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import LoadingPanel from './components/LoadingPanel.vue';
-
-import UserUi from './components/UserUi.vue';
-import { ref } from 'vue';
-
+import UserUiTest from './components/UserUiTest.vue';
+import { computed, ref } from 'vue';
 import { useLoading } from '@/States/useLoading';
+import UserUi from './components/UserUi.vue';
 const { loadingVisible } = useLoading();
+const router = useRouter();
+const route = useRoute()
+const isDebugViews = computed(() => {
+  return !route.fullPath.includes("Levels")
+})
+
 </script>
 
 <template>
   <!-- <header> -->
   <LoadingPanel v-if="loadingVisible" />
-  <UserUi />
+  <UserUiTest v-if="isDebugViews" />
+  <UserUi v-else />
   <!-- </header> -->
 
   <RouterView />

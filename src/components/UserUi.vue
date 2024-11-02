@@ -1,117 +1,94 @@
 <template>
-    <div class="overlayer">
-        <div class="buttonFloatContainer">
-            <SpeedDial ico :model="items" direction="up" class="buttonFloat">
-                <template #button="{ toggleCallback }">
-                    <Button outlined class="border" @click="toggleCallback">
-                        <i class="pi pi-chevron-up" style="font-size: 2rem"></i>
-                    </Button>
-                </template>
-                <template #item="{ item, toggleCallback }">
-                    <div class="flex flex-col items-center justify-between gap-2 p-2 border rounded border-surface-200 dark:border-surface-700 w-20 cursor-pointer"
-                        @click="toggleCallback">
-                        <span :class="item.icon" />
-                        <span>
-                            {{ item.label }}
-                        </span>
-                    </div>
-                </template>
-            </SpeedDial>
+    <div class="overlayerUI">
+
+        <div class="wideBar topBar">
+            <Button icon="pi pi-play" class="UiButton" />
+            <Button icon="pi pi-replay" class="UiButton" />
+            <Button icon="pi pi-times" class="UiButton" />
+        </div>
+        <div class="wideBar bottomBar">
+
+            <Button class="UiButton" :style="currLevel === item ? 'background-color: coral' : ''"
+                v-for="(item, index) in levelsNubmers" v-bind:key="index" @click="onPageClick(item)">
+                {{ item }}
+            </Button>
+
         </div>
     </div>
     <!-- </div>pi-chevron-up -->
 </template>
 
 <script setup lang="ts">
-
-import { ref } from 'vue';
+import { useLevelsAcces } from '@/States/useLevelsAcces';
+import Button from 'primevue/button';
+import { attribute } from 'three/webgpu';
+import { computed, ComputedRef, ref } from 'vue';
 // import { useToast } from 'primevue/usetoast';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
+const levelAcces = useLevelsAcces()
 // const toast = useToast();
 const router = useRouter();
+const route = useRoute();
 
-const items = ref([
-    {
-        label: 'Floor Test',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("FloorTest")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
-        label: 'Physic Demo ',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("PhysicDemoView")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
-        label: 'Sas Visualizer',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("SasVisualizerView")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
-        label: 'Shapes Demo ',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("ShapesDemoView")
-            // window.location.href = 'https://vuejs.org/'
-        }
+const currLevel: ComputedRef<number> = computed(() => {
+    const splits = route.fullPath.split("/");
+    const last = splits[splits.length - 1];
+    return parseInt(last);
+})
+
+const levelsNubmers: ComputedRef<number[]> = computed(() => {
+    const arr = [];;
+    for (let index = 1; index <= levelAcces.solvedLevles.value + 1 && index <= levelAcces.maxLevels; index++) {
+        arr.push(index);
+
     }
-    ,
-    {
-        label: 'Spring Simulation ',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("SpringSimulationTest")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    }
-    ,
-    {
-        label: 'Movable Spring Test ',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("MovableSpringTest")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
-        label: 'Particle Test ',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("ParticleTest")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    },
-    {
-        label: 'Fan Test ',
-        icon: 'pi pi-link',
-        command: () => {
-            router.push("FanTest")
-            // window.location.href = 'https://vuejs.org/'
-        }
-    }
-])
+    return arr;
+})
+
+const onPageClick = (nm: number) => {
+    console.log(`page ${nm} clicked`)
+    router.replace(nm.toString())
+}
+
 </script>
 
 <style lang="css">
-.overlayer {
-    position: absolute;
-    pointer-events: none;
+.overlayerUI {
+    position: fixed;
     width: 100%;
     height: 100%;
     display: flex;
-    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    z-index: 10;
+}
+
+.wideBar {
+    background-color: rgb(83, 83, 83);
+    width: 100%;
+    height: 3rem;
+    padding: auto;
+}
+
+.topBar {
+    align-self: flex-start;
+    justify-self: flex-start;
+    display: flex;
     justify-content: flex-end;
+}
+
+.UiButton {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    margin-right: 0.8rem;
+}
+
+.bottomBar {
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .buttonFloatContainer {
