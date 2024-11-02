@@ -22,7 +22,7 @@ export default class CollidableSpring extends Spring {
       )
 
       line.game = this.game
-      this.game?._objectReferenceController.addCollider(line as ICollidable)
+      this.game?._objectReferenceController.addCollider(line as unknown as ICollidable)
       this._lines.push(line)
     }
     node.game = this.game

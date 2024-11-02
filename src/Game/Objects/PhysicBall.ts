@@ -15,6 +15,7 @@ export default class PhysicBall extends Ball implements ISimulatable, ICollidabl
   constructor(pos: Vector2, radius: number = 3, color: string = 'white') {
     super(pos, radius, color)
   }
+  isActivator: boolean = false
   isCollsioniActive: boolean = true
   OnObjectEnter(collidable: ICollidable): void {
     // do nothing

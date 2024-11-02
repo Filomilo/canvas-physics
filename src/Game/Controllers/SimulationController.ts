@@ -59,19 +59,24 @@ class SimulationController {
           if (resolveVector) {
             // console.log("resolveVector: "+JSON.stringify(resolveVector))
             // simulatable.Velocity.add(resolveVector)
-            if (implementsTransformable(simulatable)) {
-              ;(simulatable as unknown as ITransformable).move(resolveVector)
+            // console.log(`is activaotr: ${element.isActivator}`)
+            if (element.isActivator) element.OnObjectEnter(simulatable as unknown as ICollidable)
+
+            if (element.isCollsioniActive) {
+              if (implementsTransformable(simulatable)) {
+                ;(simulatable as unknown as ITransformable).move(resolveVector)
+              }
+              simulatable.modifyVelocity((vel: Vector2) => {
+                //   return vel
+                if (simulatable.getWeight() === 0) return vel
+                const force: number = vel.length() * 0.8
+                return resolveVector
+                  .clone()
+                  .normalize()
+                  .multiplyScalar(force * simulatable.getWeight())
+                // .add(vel)
+              })
             }
-            simulatable.modifyVelocity((vel: Vector2) => {
-              //   return vel
-              if (simulatable.getWeight() === 0) return vel
-              const force: number = vel.length() * 0.8
-              return resolveVector
-                .clone()
-                .normalize()
-                .multiplyScalar(force * simulatable.getWeight())
-              // .add(vel)
-            })
             // if(isColsionWIthSimultabel)
             // {
             //     const sim:ISimulatable=element as unknown as ISimulatable;

@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/Levels/1'
+      redirect: '/WinActivationTest'
     },
     {
       path: '/SpringSimulationTest',
@@ -54,6 +54,11 @@ const router = createRouter({
       path: '/ParticleTest',
       name: 'ParticleTest',
       component: () => import('@/views/ParticleSimulationView.vue')
+    },
+    {
+      path: '/WinActivationTest',
+      name: 'WinActivationTest',
+      component: () => import('@/views/WinActivationTest.vue')
     },
     {
       path: '/Levels/1',

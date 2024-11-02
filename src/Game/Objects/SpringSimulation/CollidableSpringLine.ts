@@ -5,6 +5,7 @@ import { CalculationHelpes, minMax } from '@/Game/Helpers/CalculationHelpes'
 import { Vector2 } from 'three'
 
 export default class CollidableSpringLine extends SpringLine implements ICollidable {
+  isActivator: boolean = false
   isCollsioniActive: boolean = true
   OnObjectEnter(collidable: ICollidable): void {
     // do nothign

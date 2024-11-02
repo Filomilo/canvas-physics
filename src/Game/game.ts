@@ -1,6 +1,6 @@
 import { implementsDrawable, type IDrawable } from './Interfaces/IDrawble'
 import ObjectReferenceController from './Controllers/ObjectReferenceController'
-import type GameObject from './Objects/GameObjectBase'
+import GameObject from './Objects/GameObjectBase'
 import type Point from './Objects/Point'
 import MouseController, { MouseEvents } from './Controllers/MouseController'
 import { Vector2 } from 'three'
@@ -9,9 +9,13 @@ import type { IClickable } from './Interfaces/IClickable'
 import SimulationController from './Controllers/SimulationController'
 import { ICollidable } from './Interfaces/ICollidable'
 import { stringify, parse } from 'flatted'
+import PlayerBall from './Objects/PlayerBall'
 // import SimulationController from "./Controllers/SimulationController"
 
 export default class Game {
+  destroyObject(arg0: GameObject) {
+    this._objectReferenceController.destroyObject(arg0)
+  }
   private _ctx!: CanvasRenderingContext2D
   private _canvas!: HTMLCanvasElement
 
@@ -52,10 +56,16 @@ export default class Game {
     this.drawObjects()
     requestAnimationFrame(this.gameLoop.bind(this))
     this.clearEvents()
-
+    this.removeObject()
     // } catch (error) {
     //   console.error('Error processgin game loop: ' + error)
     // }
+  }
+  removeObject() {
+    this._objectReferenceController.awaitingDestruciton.forEach((obj: GameObject) => {
+      this._objectReferenceController.removeFromAll(obj)
+    })
+    this._objectReferenceController.awaitingDestruciton = []
   }
 
   //#region EVENTS

@@ -6,6 +6,7 @@ import Polygon from './Polygon'
 let counter = 0
 
 class CollidablePolygon extends Polygon implements ICollidable {
+  isActivator: boolean=false
   isCollsioniActive: boolean = true
   OnObjectEnter(collidable: ICollidable): void {
     // Do nothing

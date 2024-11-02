@@ -12,6 +12,9 @@ import { implementsUpdatable, type IUpdatable } from '../Interfaces/IUpatable'
 import type GameObject from '../Objects/GameObjectBase'
 
 export default class ObjectReferenceController {
+  destroyObject(arg0: GameObject) {
+    this.awaitingDestruciton.push(arg0)
+  }
   AllObjects: GameObject[] = []
   ClickableObjects: IClickable[] = []
   DrawableObjects: IDrawable[] = []
@@ -23,6 +26,7 @@ export default class ObjectReferenceController {
   SimulatableObjects: ISimulatable[] = []
   AffectorObject: IAffector[] = []
   CollidableObjects: ICollidable[] = []
+  awaitingDestruciton: GameObject[] = []
 
   public addCollider(collider: ICollidable) {
     this.CollidableObjects.push(collider)
@@ -65,5 +69,47 @@ export default class ObjectReferenceController {
       this, this.CollidableObjects.push(object as unknown as ICollidable)
     }
     // console.log('SimulatableObjects: ' + this.SimulatableObjects.length)
+  }
+
+  removeFromAll(object: GameObject) {
+    this.AllObjects = this.AllObjects.filter((obj) => obj !== object)
+    if (implementsClickable(object)) {
+      this.ClickableObjects = this.ClickableObjects.filter((obj) => obj !== (object as unknown))
+    }
+
+    if (implementsDrawable(object)) {
+      this.DrawableObjects = this.DrawableObjects.filter((obj) => obj !== (object as unknown))
+    }
+
+    if (implementsHoverable(object)) {
+      this.HoverableObjects = this.HoverableObjects.filter((obj) => obj !== (object as unknown))
+    }
+
+    if (implementsPressable(object)) {
+      this.PressableObjects = this.PressableObjects.filter((obj) => obj !== (object as unknown))
+    }
+
+    if (implementsTransformable(object)) {
+      this.TransformableObjects = this.TransformableObjects.filter(
+        (obj) => obj !== (object as unknown)
+      )
+    }
+    if (implementsMouseReactive(object)) {
+      this.MouseReactiveObjects = this.MouseReactiveObjects.filter(
+        (obj) => obj !== (object as unknown)
+      )
+    }
+    if (implementsUpdatable(object)) {
+      this.UpdatableObjects = this.UpdatableObjects.filter((obj) => obj !== (object as unknown))
+    }
+    if (implementsSimulatable(object)) {
+      this.SimulatableObjects = this.SimulatableObjects.filter((obj) => obj !== (object as unknown))
+    }
+    if (implementsAffector(object)) {
+      this.AffectorObject = this.AffectorObject.filter((obj) => obj !== (object as unknown))
+    }
+    if (implementsCollidable(object)) {
+      this.CollidableObjects = this.CollidableObjects.filter((obj) => obj !== (object as unknown))
+    }
   }
 }

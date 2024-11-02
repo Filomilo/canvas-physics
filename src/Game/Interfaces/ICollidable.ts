@@ -3,6 +3,7 @@ import type { IMouseReactive } from './IMouseReactive'
 import { minMax } from '../Helpers/CalculationHelpes'
 export interface ICollidable {
   isCollsioniActive: boolean
+  isActivator: boolean
   castObjectOntoNormal(N: Vector2): minMax
   getNormalsForCollision(): Vector2[]
   getCenterPoint(): Vector2
@@ -15,6 +16,7 @@ export function implementsCollidable(obj: any): boolean {
     typeof obj.getNormalsForCollision === 'function' &&
     typeof obj.getCenterPoint === 'function' &&
     typeof obj.isCollsioniActive === 'boolean' &&
+    typeof obj.isActivator === 'boolean' &&
     typeof obj.OnObjectEnter === 'function'
   )
 }

@@ -42,11 +42,12 @@ export default class ParticleSolver
   private updateEmitters() {
     this._Emitters.forEach((x: IEmitter) => {
       // console.log("ParticleSolver emitParticles")
-      x.emitParticles().forEach((paricles: Particle) => {
-        if (this._Particles.length < GameConfig.ParticleSolverLimit) {
-          this._Particles.push(paricles)
-        }
-      })
+      if (x.isActive)
+        x.emitParticles().forEach((paricles: Particle) => {
+          if (this._Particles.length < GameConfig.ParticleSolverLimit) {
+            this._Particles.push(paricles)
+          }
+        })
     })
   }
   private simulateParticles() {}

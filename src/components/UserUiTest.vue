@@ -97,6 +97,14 @@ const items = ref([
             router.push("FanTest")
             // window.location.href = 'https://vuejs.org/'
         }
+    },
+    {
+        label: 'Win Activation Test ',
+        icon: 'pi pi-link',
+        command: () => {
+            router.push("WinActivationTest")
+            // window.location.href = 'https://vuejs.org/'
+        }
     }
 ])
 </script>

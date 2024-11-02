@@ -27,6 +27,7 @@ export default class LinePartilceEmitter extends GameObject implements IEmitter,
     this._partcleLife = partcleLife
     this._speed = particleSpeed
   }
+  isActive: boolean = true
   move(moveVector: Vector2): ITransformable {
     //
     //  throw new Error('Method not implemented.')
