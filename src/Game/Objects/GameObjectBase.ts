@@ -6,7 +6,7 @@ export default class GameObject {
     return []
   }
   constructor() {}
-  clone(): any {
+  public clone(): any {
     const obj: any = {
       game: this.game
     }

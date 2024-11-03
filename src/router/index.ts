@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useLoading } from '@/States/useLoading'
+import { useLevelsAcces } from '@/States/useLevelsAcces'
 const { loadingVisible } = useLoading()
 
 const router = createRouter({
@@ -63,22 +64,42 @@ const router = createRouter({
     {
       path: '/Levels/1',
       name: 'Level1',
-      component: () => import('@/views/Levels/Level1.vue')
+      component: () => import('@/views/Levels/Level1.vue'),
+      beforeEnter: (to, from) => {
+        const levelAcces = useLevelsAcces()
+        const acces: number = levelAcces.solvedLevles.value
+        if (acces < 1 - 1) return false
+      }
     },
     {
       path: '/Levels/2',
       name: 'Level2',
-      component: () => import('@/views/Levels/Level2.vue')
+      component: () => import('@/views/Levels/Level2.vue'),
+      beforeEnter: (to, from) => {
+        const levelAcces = useLevelsAcces()
+        const acces: number = levelAcces.solvedLevles.value
+        if (acces < 2 - 1) return false
+      }
     },
     {
       path: '/Levels/3',
       name: 'Level3',
-      component: () => import('@/views/Levels/Level3.vue')
+      component: () => import('@/views/Levels/Level3.vue'),
+      beforeEnter: (to, from) => {
+        const levelAcces = useLevelsAcces()
+        const acces: number = levelAcces.solvedLevles.value
+        if (acces < 3 - 1) return false
+      }
     },
     {
       path: '/Levels/4',
       name: 'Level4',
-      component: () => import('@/views/Levels/Level4.vue')
+      component: () => import('@/views/Levels/Level4.vue'),
+      beforeEnter: (to, from) => {
+        const levelAcces = useLevelsAcces()
+        const acces: number = levelAcces.solvedLevles.value
+        if (acces < 4 - 1) return false
+      }
     }
   ]
 })

@@ -61,7 +61,7 @@ export namespace AlgorithmsHelpers {
       minOverlapVectpr = new Vector2(-minOverlapVectpr.x, minOverlapVectpr.y)
     }
     if (diff.y < 0 && minOverlapVectpr.y > 0) {
-      minOverlapVectpr = new Vector2(minOverlapVectpr.x, -minOverlapVectpr.y)
+      minOverlapVectpr = new Vector2(-minOverlapVectpr.x, -minOverlapVectpr.y)
     }
 
     return minOverlapVectpr

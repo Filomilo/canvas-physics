@@ -18,7 +18,7 @@ class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
     new Vector2(0, -30),
     50,
     4,
-    3
+    2
   )
   private particleSolver: ParticleSolver = new ParticleSolver()
     .addEmitter(this.particleEmitter)
@@ -27,7 +27,7 @@ class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
       const ageRatio: number = particle.age / particle.life
       particle._radius = (1 - ageRatio) * 20
     })
-  private force: FanForce = new FanForce(new Vector2(0, -30), 50, 300, 0.6)
+  private force: FanForce = new FanForce(new Vector2(0, -30), 50, 300, 1.9)
 
   private components: GameObject[] = [
     this.particleSolver,
