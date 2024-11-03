@@ -5,6 +5,8 @@ soundLvlUp.load()
 
 class SoundController {
   public playLvlUp() {
+    soundLvlUp.pause()
+    soundLvlUp.currentTime = 0
     soundLvlUp.play()
   }
 }

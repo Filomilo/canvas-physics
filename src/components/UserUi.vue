@@ -2,9 +2,9 @@
     <div class="overlayerUI">
 
         <div class="wideBar topBar">
-            <Button icon="pi pi-play" class="UiButton" />
-            <Button icon="pi pi-replay" class="UiButton" />
-            <Button icon="pi pi-times" class="UiButton" />
+            <Button icon="pi pi-play" class="UiButton" @click="UiControlMethod.play.value()" />
+            <Button icon="pi pi-replay" class="UiButton" @click="UiControlMethod.restart.value()" />
+            <Button icon="pi pi-times" class="UiButton" @click="UiControlMethod.refresh.value()" />
         </div>
         <div class="wideBar bottomBar">
 
@@ -20,12 +20,14 @@
 
 <script setup lang="ts">
 import { useLevelsAcces } from '@/States/useLevelsAcces';
+import { useUiControlsMethod } from '@/States/useUiControlsMethod';
 import Button from 'primevue/button';
 import { attribute } from 'three/webgpu';
 import { computed, ComputedRef, ref } from 'vue';
 // import { useToast } from 'primevue/usetoast';
 import { useRoute, useRouter } from 'vue-router';
 
+const UiControlMethod = useUiControlsMethod();
 const levelAcces = useLevelsAcces()
 // const toast = useToast();
 const router = useRouter();

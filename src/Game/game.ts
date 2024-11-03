@@ -263,4 +263,8 @@ export default class Game {
     })
     // console.log('this._objectReferenceController: ' + stringify(this._objectReferenceController))
   }
+
+  hasObject(player: PlayerBall) {
+    return this._objectReferenceController.AllObjects.includes(player)
+  }
 }

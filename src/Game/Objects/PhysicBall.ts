@@ -68,4 +68,14 @@ export default class PhysicBall extends Ball implements ISimulatable, ICollidabl
     super.draw(ctx)
     // console.log("Velocity: "+JSON.stringify( this.Velocity))
   }
+
+  public clone(): any {
+    const obj = super.clone()
+    obj.rotationSpeed = this.rotationSpeed
+    obj.Velocity = this.Velocity.clone()
+    obj.isActivator = this.isActivator
+    obj.isCollsioniActive = this.isCollsioniActive
+    obj.IsSimulatable = this.IsSimulatable
+    return obj
+  }
 }

@@ -17,16 +17,19 @@
 import Game from '@/Game/Game';
 import PlayerBall from '@/Game/Objects/PlayerBall';
 import { useLevelsAcces } from '@/States/useLevelsAcces';
+import { useUiControlsMethod } from '@/States/useUiControlsMethod';
 import GameComponent from '@/components/GameComponent.vue';
+import { Vector2 } from 'three';
 
 const levelAcces = useLevelsAcces();
-
+const UiControlMethod = useUiControlsMethod();
 const props = defineProps<{
     game: Game,
     player: PlayerBall,
     level: number
 }>()
-
+const originalPlayerPositon: Vector2 = props.player.position.clone();
+props.game._SimulationController.isSimulationActive = false;
 props.player.addOnACtivateMethod(() => {
     console.log("LVL UP")
     props.game.soundController.playLvlUp();
@@ -35,6 +38,16 @@ props.player.addOnACtivateMethod(() => {
     }
 })
 
+UiControlMethod.play.value = () => {
+    console.log(`level ${props.level} activated simualtation`)
+    props.game._SimulationController.isSimulationActive = true;
+}
+UiControlMethod.restart.value = () => {
+    props.player.position = originalPlayerPositon.clone();
+    if (!props.game.hasObject(props.player)) {
+        props.game.addObject(props.player);
+    }
+}
 </script>
 
 <style lang="css"></style>

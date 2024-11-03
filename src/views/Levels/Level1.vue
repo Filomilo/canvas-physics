@@ -25,7 +25,7 @@ const game: Game = new Game();
 
 
 game.addObject(new Gravity())
-const ball: PlayerBall = new PlayerBall(new Vector2(200, 30));
+const ball: PlayerBall = new PlayerBall(new Vector2(200, 60));
 
 game.addObject(new WinBox(new Vector2(200, 150)))
 game.addObject(ball)

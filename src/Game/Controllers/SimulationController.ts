@@ -10,12 +10,14 @@ import { implementsTransformable, ITransformable } from '../Interfaces/ITransfor
 
 class SimulationController {
   private _game: Game
+  public isSimulationActive: boolean = true
 
   constructor(game: Game) {
     this._game = game
   }
 
   public simulate() {
+    if (!this.isSimulationActive) return
     // console.log("Colliders: "+this._game._objectReferenceController.CollidableObjects.length)
     this._game._objectReferenceController.SimulatableObjects.forEach((element: ISimulatable) => {
       if (element.IsSimulatable) {

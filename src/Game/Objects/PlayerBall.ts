@@ -24,6 +24,12 @@ class PlayerBall extends PhysicBall implements IActivtable {
     })
     // console.log(`Destroy Ball: ${stringify(this)}`)
   }
+
+  public clone(): any {
+    const obj = super.clone()
+    obj.activateMethods = [...this.activateMethods]
+    return obj
+  }
 }
 
 export default PlayerBall
