@@ -20,7 +20,7 @@ class CollidableRectangle extends Rectangle implements ICollidable {
   ) {
     super(width, height, position, color)
   }
-  isActivator: boolean=false
+  isActivator: boolean = false
   isCollsioniActive: boolean = true
   OnObjectEnter(collidable: ICollidable): void {
     // Do nothing

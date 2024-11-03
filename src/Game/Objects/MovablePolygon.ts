@@ -42,7 +42,7 @@ export default class MovablePolygon
       // console.log('MovablePolygonPRess: ' + this.isPressed)
       const delta: Vector2 | undefined = this.game?._MouseController.getMouseDelta()
       this.move(this.isPressed ? (delta ? delta : new Vector2(0, 0)) : new Vector2(0, 0))
-      this.rotate(this.game?this.game?._MouseController.getScrollDelta():0)
+      this.rotate(this.game ? this.game?._MouseController.getScrollDelta() : 0)
     }
     // if(this.isPressed===true)
     // {

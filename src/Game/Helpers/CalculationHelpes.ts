@@ -78,7 +78,7 @@ export namespace CalculationHelpes {
     //  pointsIncludingConnectedEdge.push(pointsIncludingConnectedEdge[0])
     const normals: Vector2[] = []
     for (let index = 0; index < points.length; index++) {
-      const pt1 = new Vector2(points[index% points.length].x, points[index% points.length].y)
+      const pt1 = new Vector2(points[index % points.length].x, points[index % points.length].y)
       const pt2 = new Vector2(
         points[(index + 1) % points.length].x,
         points[(index + 1) % points.length].y
@@ -95,18 +95,16 @@ export namespace CalculationHelpes {
 
   //do not use in calcauiton, its only to simply viusaliasiotn
 
-let castingCounter=0;
+  let castingCounter = 0
 
   export function castPointOnAxis(pt: Vector2, axis: Vector2): number {
-    
-    const normalizedAxis = axis.normalize(); // Ensure axis has a length of 1
-    const casted:number= normalizedAxis.dot(pt);
-    if(castingCounter--<6 && axis.x!==0&& axis.y!==0)
-    {
+    const normalizedAxis = axis.normalize() // Ensure axis has a length of 1
+    const casted: number = normalizedAxis.dot(pt)
+    if (castingCounter-- < 6 && axis.x !== 0 && axis.y !== 0) {
       // console.log("Casting "+JSON.stringify(pt)+" on axis "+JSON.stringify(axis)+" resulted in "+ casted)
-      castingCounter=1000;
+      castingCounter = 1000
     }
-return casted;
+    return casted
   }
 
   export function getMinMaxOfPointsOnAxis(
@@ -117,7 +115,7 @@ return casted;
     let min: number = Number.MAX_VALUE
 
     pts.forEach((pt: Vector2) => {
-      const len: number =castPointOnAxis(pt,axis)  ;
+      const len: number = castPointOnAxis(pt, axis)
       max = max < len ? len : max
       min = min > len ? len : min
     })
@@ -134,14 +132,12 @@ return casted;
     }
   }
 
-
-  export function getRotationFromVector(vec:Vector2): number{
-    return Math.atan2(vec.y,vec.x)
+  export function getRotationFromVector(vec: Vector2): number {
+    return Math.atan2(vec.y, vec.x)
   }
 
-
-    export function getNormalOfVector(dir: Vector2):Vector2 {
-      const N = new Vector2(dir.y, -dir.x).normalize()
-      return N;
-    }
+  export function getNormalOfVector(dir: Vector2): Vector2 {
+    const N = new Vector2(dir.y, -dir.x).normalize()
+    return N
+  }
 }

@@ -19,18 +19,13 @@ export default class MovableBall
   extends PhysicBall
   implements IHoverable, IClickable, IPressable, IUpdatable
 {
-    isPressed: boolean =false   
-    mouseOnState: boolean=false
-    isHoveredOver: any
+  isPressed: boolean = false
+  mouseOnState: boolean = false
+  isHoveredOver: any
 
-
-
-
-  centerOrigin() {
-
-  }
+  centerOrigin() {}
   resetTransoform() {
-    this.position=new Vector2();
+    this.position = new Vector2()
   }
   private _originalColor: string = 'white'
 
@@ -38,7 +33,7 @@ export default class MovableBall
     if (this.isPressed === true) {
       const delta: Vector2 | undefined = this.game?._MouseController.getMouseDelta()
       this.move(this.isPressed ? (delta ? delta : new Vector2(0, 0)) : new Vector2(0, 0))
-      this.rotate(this.game?this.game?._MouseController.getScrollDelta():0)
+      this.rotate(this.game ? this.game?._MouseController.getScrollDelta() : 0)
     }
     // if(this.isPressed===true)
     // {
@@ -80,14 +75,9 @@ export default class MovableBall
     this._color = this._originalColor
   }
 
-
-
-
   isMouseOn(mousePosition: Vector2): boolean {
-
-    return AlgorithmsHelpers.isPointWithinCirlce(mousePosition, this.position,this._radius)
+    return AlgorithmsHelpers.isPointWithinCirlce(mousePosition, this.position, this._radius)
   }
-
 
   draw(ctx: CanvasRenderingContext2D): void {
     if (this.isHoveredOver) this._color = 'red'

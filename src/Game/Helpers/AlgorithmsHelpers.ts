@@ -23,20 +23,19 @@ export namespace AlgorithmsHelpers {
     return is_in
   }
   export function isPointWithinCirlce(point: Vector2, center: Vector2, radius: number): boolean {
-    const distance: number=point.distanceTo(center);
-    return distance<radius
+    const distance: number = point.distanceTo(center)
+    return distance < radius
   }
 
-  export function SasCollision(obj1: ICollidable, obj2: ICollidable): Vector2 | null
-  {
-    const normals: Vector2[] =obj1.getNormalsForCollision().concat(obj2.getNormalsForCollision());
+  export function SasCollision(obj1: ICollidable, obj2: ICollidable): Vector2 | null {
+    const normals: Vector2[] = obj1.getNormalsForCollision().concat(obj2.getNormalsForCollision())
     let minOverlap: number = Number.MAX_VALUE
     let minOverlapVectpr: Vector2 = new Vector2()
 
     for (let index = 0; index < normals.length; index++) {
       const N = normals[index]
-      const minMax1: minMax =  obj1.castObjectOntoNormal(N)  
-      const minMax2: minMax = obj2.castObjectOntoNormal(N)  
+      const minMax1: minMax = obj1.castObjectOntoNormal(N)
+      const minMax2: minMax = obj2.castObjectOntoNormal(N)
       const overlapLegnth = CalculationHelpes.getMinMaxOverlapLength(minMax1, minMax2)
       if (overlapLegnth === 0) {
         return null
@@ -48,26 +47,23 @@ export namespace AlgorithmsHelpers {
             normals[index].x * overlapLegnth,
             normals[index].y * overlapLegnth
           )
-       
         }
       }
     }
 
-    const center1: Vector2=obj1.getCenterPoint();
-    const center2: Vector2=obj2.getCenterPoint();
-    const diff=center1.sub(center2);
+    const center1: Vector2 = obj1.getCenterPoint()
+    const center2: Vector2 = obj2.getCenterPoint()
+    const diff = center1.sub(center2)
     // console.log("minOverlapVectpr: "+JSON.stringify(minOverlapVectpr))
 
     // console.log("diff: "+JSON.stringify(diff))
-    if(diff.x<0 && minOverlapVectpr.x>0)
-    {
-      minOverlapVectpr= new Vector2(-minOverlapVectpr.x,minOverlapVectpr.y);
+    if (diff.x < 0 && minOverlapVectpr.x > 0) {
+      minOverlapVectpr = new Vector2(-minOverlapVectpr.x, minOverlapVectpr.y)
     }
-    if(diff.y<0 && minOverlapVectpr.y>0)
-      {
-        minOverlapVectpr= new Vector2(minOverlapVectpr.x,-minOverlapVectpr.y);
-      }
-   
+    if (diff.y < 0 && minOverlapVectpr.y > 0) {
+      minOverlapVectpr = new Vector2(minOverlapVectpr.x, -minOverlapVectpr.y)
+    }
+
     return minOverlapVectpr
   }
 
@@ -97,6 +93,4 @@ export namespace AlgorithmsHelpers {
   //   }
   //   return minOverlapVectpr
   // }
-
-
 }

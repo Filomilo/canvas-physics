@@ -1,31 +1,28 @@
 <template>
-    <main class="DemoView">
-        <div class="titleStyle">
-            Shapes canvas Demo
-        </div>
+  <main class="DemoView">
+    <div class="titleStyle">Shapes canvas Demo</div>
 
-
-        <GameComponent class="gameView" id="shapes_demo" :game="game" />
-    </main>
+    <GameComponent class="gameView" id="shapes_demo" :game="game" />
+  </main>
 </template>
 
-
 <script lang="ts" setup>
-
-import GameComponent from '@/components/GameComponent.vue';
-import Game from '@/Game/Game';
-import MovablePolygon from '@/Game/Objects/MovablePolygon';
-import Point from '@/Game/Objects/Point';
-import Polygon from '@/Game/Objects/Polygon';
+import GameComponent from '@/components/GameComponent.vue'
+import Game from '@/Game/Game'
+import MovablePolygon from '@/Game/Objects/MovablePolygon'
+import Point from '@/Game/Objects/Point'
+import Polygon from '@/Game/Objects/Polygon'
 import { Vector2 } from 'three'
-const game: Game = new Game();
+const game: Game = new Game()
 
-game.addObject(new Point(new Vector2(20, 20)));
-const tringle:MovablePolygon=new MovablePolygon([new Vector2(-100, -100), new Vector2(-100, 200), new Vector2(200, 100)]);
+game.addObject(new Point(new Vector2(20, 20)))
+const tringle: MovablePolygon = new MovablePolygon([
+  new Vector2(-100, -100),
+  new Vector2(-100, 200),
+  new Vector2(200, 100)
+])
 tringle.centerOrigin()
-tringle.move(new Vector2(100,100))
+tringle.move(new Vector2(100, 100))
 
 game.addObject(tringle)
-
-
 </script>

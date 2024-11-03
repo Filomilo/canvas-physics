@@ -10,9 +10,9 @@ export namespace DrawHelpers {
   ) {
     // console.log("drawCircle: "+radius)
     ctx.fillStyle = color
-    ctx.lineWidth = 0;
+    ctx.lineWidth = 0
     ctx.beginPath()
-    ctx.arc(x, y, radius/2, 0, 2 * Math.PI)
+    ctx.arc(x, y, radius / 2, 0, 2 * Math.PI)
     ctx.fill()
   }
   export function drawLine(
@@ -57,20 +57,17 @@ export namespace DrawHelpers {
     ctx: CanvasRenderingContext2D,
     pt1: Vector2,
     pt2: Vector2,
-    width: number=2,
+    width: number = 2,
     color: string = 'white'
-  ){
-
-
-    ctx.beginPath(); 
-ctx.moveTo(pt1.x, pt1.y); 
-ctx.lineTo(pt2.x, pt2.y); 
+  ) {
+    ctx.beginPath()
+    ctx.moveTo(pt1.x, pt1.y)
+    ctx.lineTo(pt2.x, pt2.y)
     ctx.strokeStyle = color
     ctx.lineWidth = width
     ctx.lineCap = 'round'
-ctx.stroke(); 
-
-    }
+    ctx.stroke()
+  }
   export function drawShape(
     ctx: CanvasRenderingContext2D,
     points: Vector2[],
