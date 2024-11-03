@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/WinActivationTest'
+      redirect: '/Levels/1'
     },
     {
       path: '/SpringSimulationTest',

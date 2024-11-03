@@ -10,6 +10,7 @@ import SimulationController from './Controllers/SimulationController'
 import { ICollidable } from './Interfaces/ICollidable'
 import { stringify, parse } from 'flatted'
 import PlayerBall from './Objects/PlayerBall'
+import SoundController from './Controllers/SoundController'
 // import SimulationController from "./Controllers/SimulationController"
 
 export default class Game {
@@ -22,6 +23,8 @@ export default class Game {
   public _objectReferenceController: ObjectReferenceController = new ObjectReferenceController()
   public _MouseController!: MouseController
   public _SimulationController: SimulationController = new SimulationController(this)
+  public soundController: SoundController = new SoundController()
+
   private dt: number = 0
   private time: number = 0
 

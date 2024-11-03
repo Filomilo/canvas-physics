@@ -4,8 +4,7 @@ import { json } from 'stream/consumers'
 import { ICollidable } from '../Interfaces/ICollidable'
 import ParticleSolver from '../Objects/Particles/ParticleSolver'
 import PointEmitter from '../Objects/Particles/Emitters/PointEmitter'
-import Game from '../Game'
-
+import Game from '@/Game/Game'
 export namespace ObjectsHelpers {
   export function spawnParticlesOnce(game: Game, pos: Vector2) {
     const solver: ParticleSolver = new ParticleSolver()
