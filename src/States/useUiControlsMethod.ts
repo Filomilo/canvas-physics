@@ -9,6 +9,7 @@ let restart = ref(() => {
 })
 let refresh = ref(() => {
   console.log('Default Refresh')
+  window.location.reload()
 })
 export function useUiControlsMethod() {
   return { play, restart, refresh }

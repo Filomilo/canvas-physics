@@ -20,7 +20,6 @@ app.use(PrimeVue, {
     }
   }
 })
-
 app.component('SpeedDial', SpeedDial)
 import PrimeVue from 'primevue/config'
 // import Noir from './presets/Noir.js'

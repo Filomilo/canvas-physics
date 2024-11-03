@@ -1,13 +1,20 @@
 // useLoading.ts
-import { computed, ComputedRef, Ref, ref } from 'vue'
+import { computed, ComputedRef, inject, Ref, ref } from 'vue'
+import { useCookies } from 'vue3-cookies'
+// const _solvedLevles: Ref<number> = ref(0)
+const { cookies } = useCookies()
+const changeWatcher = ref(0)
 
-const _solvedLevles: Ref<number> = ref(0)
 const solvedLevles: ComputedRef<number> = computed(() => {
-  return _solvedLevles.value
+  changeWatcher.value = changeWatcher.value
+  const lvls = cookies!.get('levels')
+  return lvls ? parseInt(lvls) : 0
 })
 
 const setNewMax = (lvl: number) => {
-  _solvedLevles.value = lvl
+  cookies.set('levels', lvl.toString())
+  changeWatcher.value = lvl
+  // _solvedLevles.value = lvl
 }
 
 const maxLevels = 4
