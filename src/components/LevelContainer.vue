@@ -1,11 +1,10 @@
 <template>
     <main class="FullPage">
-        <div :id="`level_${props.level}`" class="FullPage">
+        <div :id="`level_${props.level}`" class="FullPage" @contextmenu="onRightClick">
             <GameComponent class="gameView" :id="`game_level_${props.level}`" :game="game" />
         </div>
-        <!-- <div class="titleStyle">
-            Level {{ props.level }}
-        </div> -->
+        <ContextMenu ref="menu" :model="ContextItems" />
+
     </main>
 </template>
 
@@ -15,7 +14,20 @@ import PlayerBall from '@/Game/Objects/PlayerBall'
 import { useLevelsAcces } from '@/States/useLevelsAcces'
 import { useUiControlsMethod } from '@/States/useUiControlsMethod'
 import GameComponent from '@/components/GameComponent.vue'
+import ContextMenu from 'primevue/contextmenu';
 import { Vector2 } from 'three'
+import { ref } from 'vue'
+
+
+const menu = ref();
+const ContextItems = ref([
+    { label: 'cheat', icon: 'pi pi-copy' },
+]);
+const onRightClick = (event: any) => {
+    console.log("right click")
+    menu.value.show(event);
+
+};
 
 const levelAcces = useLevelsAcces()
 const UiControlMethod = useUiControlsMethod()
@@ -25,7 +37,6 @@ const props = defineProps<{
     level: number
 }>()
 const originalPlayerPositon: Vector2 = props.player.position.clone()
-// props.game._SimulationController.isSimulationActive = false
 props.player.addOnACtivateMethod(() => {
     console.log('LVL UP')
     props.game.soundController.playLvlUp()
