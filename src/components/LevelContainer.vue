@@ -16,26 +16,31 @@ import { useUiControlsMethod } from '@/States/useUiControlsMethod'
 import GameComponent from '@/components/GameComponent.vue'
 import ContextMenu from 'primevue/contextmenu';
 import { Vector2 } from 'three'
-import { ref } from 'vue'
-
-
-const menu = ref();
-const ContextItems = ref([
-    { label: 'cheat', icon: 'pi pi-copy' },
-]);
-const onRightClick = (event: any) => {
-    console.log("right click")
-    menu.value.show(event);
-
-};
-
+import { compile, ref } from 'vue'
 const levelAcces = useLevelsAcces()
 const UiControlMethod = useUiControlsMethod()
 const props = defineProps<{
     game: Game
     player: PlayerBall
     level: number
+    cheat: any
 }>()
+
+const menu = ref();
+const cheat = () => {
+    props.cheat();
+}
+const ContextItems = ref([
+    { label: 'cheat', icon: 'pi pi-copy', command: cheat },
+]);
+
+const onRightClick = (event: any) => {
+    console.log("right click")
+    menu.value.show(event);
+
+};
+
+
 const originalPlayerPositon: Vector2 = props.player.position.clone()
 props.player.addOnACtivateMethod(() => {
     console.log('LVL UP')

@@ -1,6 +1,6 @@
 <template>
     <div class="FullPage">
-        <LevelContainer :game="game" :player="ball" :level="1" />
+        <LevelContainer :game="game" :player="ball" :level="1" :cheat="cheatmethod" />
     </div>
 </template>
 
@@ -35,5 +35,9 @@ box.rotate(-1.5)
 box.move(new Vector2(800, -200))
 
 game.addObject(box)
+
+const cheatmethod = () => {
+    console.log("CHEAT")
+}
 
 </script>
