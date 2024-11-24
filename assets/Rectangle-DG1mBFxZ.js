@@ -1,1 +1,0 @@
-import{V as s}from"./GameComponent.vue_vue_type_style_index_0_lang-Djne7a86.js";import{P as c}from"./Polygon-Tpd2I_Ih.js";class l extends c{_width;_height;constructor(o,e,n,r="white"){const t=[new s(-o/2,e/2),new s(o/2,e/2),new s(o/2,-e/2),new s(-o/2,-e/2)];super(t,r),this.move(n)}}export{l as R};

@@ -1,0 +1,1 @@
+import{a,V as o,c as t}from"./GameComponent.vue_vue_type_style_index_0_lang-BCW1kSqt.js";class i extends a{constructor(){super()}affect(e){e.addVelocity(new o(0,t.Gravity*t.SimulationTimeStep*e.getWeight()))}}export{i as G};
