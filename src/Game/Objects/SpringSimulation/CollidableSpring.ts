@@ -5,6 +5,7 @@ import SpingNode from './SpingNode'
 import { Vector2 } from 'three'
 
 export default class CollidableSpring extends Spring {
+
   constructor(
     paramOne: undefined | SpingNode[] | Vector2 = undefined,
     paramTwo: Vector2 | undefined = undefined,

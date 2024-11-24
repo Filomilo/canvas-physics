@@ -43,6 +43,10 @@ class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
     super()
     this.move(postion)
   }
+  resetTransforamtion(): ITransformable {
+this. move(this.posState.clone().multiplyScalar(-1));
+return this;
+}
   onPress(): void {
     // throw new Error('Method not implemented.')
   }
@@ -56,7 +60,9 @@ class Fan extends GameObject implements ITransformable, IPressable, IUpdatable {
     return AlgorithmsHelpers.isPointWithinShape(mousePosition, transformedPoints)
   }
   mouseOnState: boolean = false
+ private posState:Vector2=new Vector2();
   move(moveVector: Vector2): ITransformable {
+   this. posState.add(moveVector);
     this.components.forEach((obj: GameObject) => {
       // console.log(
       //   'move: ' +

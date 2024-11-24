@@ -1,6 +1,6 @@
 <template>
   <div class="FullPage">
-    <LevelContainer :game="game" :player="ball" :level="2" />
+    <LevelContainer :game="game" :player="ball" :level="2" :cheat="cheatmethod" />
   </div>
 </template>
 
@@ -41,4 +41,20 @@ game.addObject(spring)
 
 game.addObject(box)
 
+
+
+
+const cheatmethod = () => {
+  spring._nodes[0].resetTransforamtion();
+  spring._nodes[spring._nodes.length-1].resetTransforamtion();
+spring._nodes[0].move(new Vector2(450,900))
+spring._nodes[spring._nodes.length-1].move(new Vector2(780,370))
+spring.resetVel();
+}
+// cheatmethod();
+// setTimeout(()=>{
+//   ball.resetTransforamtion();
+//   ball.Velocity=new Vector2();
+//   ball.move(new Vector2(200, 60))
+// }, 5000)
 </script>

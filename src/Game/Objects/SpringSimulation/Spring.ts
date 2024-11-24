@@ -11,7 +11,7 @@ import SpringLine from './SpringLine'
 import MovableSpringNode from './MovableSpringNode'
 
 export default class Spring extends GameObject implements ISimulatable, IUpdatable {
-  protected _nodes: SpingNode[] = []
+  public _nodes: SpingNode[] = []
   protected _lines: SpringLine[] = []
 
   constructor(
@@ -80,6 +80,11 @@ export default class Spring extends GameObject implements ISimulatable, IUpdatab
     //   x.update(dt)
     // })
     // throw new Error("Method not implemented.");
+  }
+  resetVel() {
+    this._nodes.forEach(x=>{
+      x.resetVel();
+    })
   }
 
   public addSpringNode(node: SpingNode): SpingNode {

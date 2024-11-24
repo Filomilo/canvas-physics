@@ -1,6 +1,6 @@
 <template>
   <div class="FullPage">
-    <LevelContainer :game="game" :player="ball" :level="4" />
+    <LevelContainer :game="game" :player="ball" :level="4" :cheat="cheatmethod" />
   </div>
 </template>
 
@@ -58,5 +58,14 @@ box1.rotate(-40);
 box2.move(new Vector2(0, -200))
 box2.rotate(0.9);
 fan.move(new Vector2(-200, -500))
-
+const cheatmethod = () => {
+  fan.resetTransforamtion();
+  fan.move(new Vector2(600, 800))
+  box1.resetTransforamtion();
+  box1.move(new Vector2(200, 600))
+box1.rotate(40);
+box2.resetTransforamtion();
+box2.move(new Vector2(750, 410))
+box2.rotate(-0.9);
+}
 </script>

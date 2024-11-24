@@ -14,6 +14,12 @@ export default class Polygon extends GameObject implements IDrawable, ITransform
     this._points = points
     this._color = color
   }
+  resetTransforamtion(): ITransformable {
+    this.transformation.identity();
+    this.localTransformation.identity();
+    return this;
+  }
+
   transformation: Matrix3 = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1)
   localTransformation: Matrix3 = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1)
 

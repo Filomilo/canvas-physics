@@ -37,7 +37,9 @@ box.move(new Vector2(800, -200))
 game.addObject(box)
 
 const cheatmethod = () => {
-    box.setPostion(new Vector2(200, 700))
+    box.resetTransforamtion();
+    box.move(new Vector2(200, 700))
+box.rotate(40);
 }
 
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="FullPage">
-    <LevelContainer :game="game" :player="ball" :level="3" />
+    <LevelContainer :game="game" :player="ball" :level="3" :cheat="cheatmethod"/>
   </div>
 </template>
 
@@ -40,5 +40,8 @@ game.addObject(fan)
 
 
 game.addObject(box)
-
+const cheatmethod = () => {
+  fan.resetTransforamtion();
+  fan.move(new Vector2(600, 570))
+}
 </script>

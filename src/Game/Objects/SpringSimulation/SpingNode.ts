@@ -12,6 +12,9 @@ export default class SpingNode extends Point implements ISimulatable, IUpdatable
     // console.log(`modifyVelocity this._vel: ${JSON.stringify(this._vel)}`)
   }
   _vel: Vector2 = new Vector2(0, 0)
+  resetVel(){
+    this._vel=new Vector2();
+  }
   addVelocity(vel: Vector2): void {
     if (this.IsSimulatable) this._vel.add(vel)
     // console.log(`addVelocity this._vel: ${JSON.stringify(this._vel)}`)

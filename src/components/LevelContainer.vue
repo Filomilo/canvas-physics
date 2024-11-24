@@ -23,7 +23,7 @@ const props = defineProps<{
     game: Game
     player: PlayerBall
     level: number
-    cheat: any
+    cheat: Function
 }>()
 
 const menu = ref();
@@ -63,4 +63,21 @@ UiControlMethod.restart.value = () => {
 }
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+.p-contextmenu p-component p-contextmenu-mobile{
+
+}
+:root {
+    --p-contextmenu-background: rgb(3, 3, 3);
+    --p-contextmenu-border-color: transparent;
+    --p-contextmenu-color: rgb(51, 51, 51);
+    --p-contextmenu-item-color: white;
+    --p-contextmenu-item-focus-color: white;
+    --p-contextmenu-item-icon-color: white;
+    --p-contextmenu-item-focus-background: rgb(51, 51, 51);
+    --p-contextmenu-item-active-background: rgb(51, 51, 51);
+    --p-contextmenu-item-icon-focus-color: white;
+    --p-contextmenu-item-focus-background: rgb(148, 101, 101);
+}
+  
+</style>

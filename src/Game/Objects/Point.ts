@@ -18,6 +18,10 @@ export default class Point extends GameObject implements ITransformable, IDrawab
     this._radius = radius
     this._color = color
   }
+  resetTransforamtion(): ITransformable {
+    this.position=new Vector2(0,0);
+    return this;
+  }
   rotate(theta: number): ITransformable {
     return this as unknown as ITransformable
   }
