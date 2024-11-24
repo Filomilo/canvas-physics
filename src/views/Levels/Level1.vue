@@ -37,7 +37,7 @@ box.move(new Vector2(800, -200))
 game.addObject(box)
 
 const cheatmethod = () => {
-    console.log("CHEAT")
+    box.setPostion(new Vector2(200, 700))
 }
 
 </script>
